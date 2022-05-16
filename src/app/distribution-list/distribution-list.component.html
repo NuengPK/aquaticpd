@@ -1,1 +1,15 @@
-<p>distribution-list works!</p>
+<h3>Distribution List</h3>
+<div class="row">
+  <div class="col-md-12">
+    <app-distribution-edit></app-distribution-edit>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10">
+    <ul class="list-group">
+      <a *ngFor="let item of distritions" class="list-group-item" style="cursor: pointer;">
+        {{ item.name }} -- ({{ item.qunatity }})
+      </a>
+    </ul>
+  </div>
+</div>
