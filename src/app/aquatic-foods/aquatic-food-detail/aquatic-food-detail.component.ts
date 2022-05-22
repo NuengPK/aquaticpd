@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-aquatic-food-detail',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aquatic-food-detail.component.css']
 })
 export class AquaticFoodDetailComponent implements OnInit {
+  @Input() data!:{name: string, description:string, imagePath: string};
 
   constructor() { }
 
