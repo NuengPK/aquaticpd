@@ -1,1 +1,17 @@
 
+    <a class="list-group-item clearfix" href="#" (click)="emitOpenDescription()">
+      <div class="float-start">
+        <span>
+        <h4 class="list-group-item-heading">{{footLists.name}}</h4>
+        <p class="list-group-item-text">{{footLists.description}}</p>
+      </span>
+
+      </div>
+      <div class="float-end border">
+        <img
+        src={{footLists.imagePath}}
+        alt={{footLists.name}}
+        class="img-responsive"
+        style="max-width:50px;">
+      </div>
+      </a>

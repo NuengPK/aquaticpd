@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,4 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class headerComponent {
-}
+@Output() onoff = new EventEmitter<string>();
+  onChangeAquaticFood(){
+    this.onoff.emit('aquaticFood');
+  };
+  onChangeDistribution(){
+    this.onoff.emit('distribution');
+  };
+};
+// console.log(this.openAquaticFood,this.openDistribution)
