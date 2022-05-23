@@ -6,6 +6,7 @@
         class="form-control"
         placeholder="Aquatic Name"
         aria-label="Aquatic Name"
+        #aquaticNameInput
       />
     </div>
     <div class="col">
@@ -15,12 +16,13 @@
         placeholder="Qty"
         aria-label="qunatity"
         [files]=""
+        #qunatityInput
       />
     </div>
   </div>
   <div class="row mb-2">
     <div class="col">
-        <button type="button" class="btn btn-success me-2">Add</button>
+        <button type="button" class="btn btn-success me-2" (click)="addDistridutionOnEdit(aquaticNameInput,qunatityInput)">Add</button>
         <button type="button" class="btn btn-danger me-2">Update</button>
         <button type="button" class="btn btn-primary me-2">Clear</button>
     </div>

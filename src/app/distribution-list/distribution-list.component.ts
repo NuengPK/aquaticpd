@@ -12,9 +12,12 @@ export class DistributionListComponent implements OnInit {
     new Distribution("ปลาอินทรี",10),
     new Distribution("หมึก",20)
   ];
-
   constructor() { }
 
+  addDistridutionOnList(data:any){
+    //this.distritions.push({name:data.name,qunatity:data.qunatity})
+    this.distritions.push(data)
+  }
   ngOnInit(): void {
   }
 
