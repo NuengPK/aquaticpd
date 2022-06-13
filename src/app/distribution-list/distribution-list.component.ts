@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Distribution } from '../shared/distribution.model';
+import { DistridutionService } from '../shared/distridution.service';
 
 @Component({
   selector: 'app-distribution-list',
@@ -7,13 +8,10 @@ import { Distribution } from '../shared/distribution.model';
   styleUrls: ['./distribution-list.component.css'],
 })
 export class DistributionListComponent implements OnInit {
-  distritions: Distribution[] = [
-    new Distribution('ปลาอินทรี', 10),
-    new Distribution('หมึก', 20),
-  ];
-  checkName: boolean = false;
-  constructor() {}
 
+  checkName: boolean = false;
+  constructor(private distridutionService:DistridutionService) {}
+  distritions = this.distridutionService.getDistridution()
   addDistridutionOnList(data: any) {
     this.checkName = false; //เป็นการเซ็ตค่าเริ่มต้นเพื่อใช้งานโปรแกรม
     //this.distritions.push({name:data.name,qunatity:data.qunatity})

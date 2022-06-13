@@ -10,6 +10,7 @@ import { AquaticFoodsComponent } from './aquatic-foods/aquatic-foods.component';
 import { DistributionListComponent } from './distribution-list/distribution-list.component';
 import { DistributionEditComponent } from './distribution-list/distribution-edit/distribution-edit.component';
 import { AquaticFoodService } from './shared/aquatic-food.service';
+import { DistridutionService } from './shared/distridution.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { AquaticFoodService } from './shared/aquatic-food.service';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [AquaticFoodService],
+  providers: [AquaticFoodService,DistridutionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
