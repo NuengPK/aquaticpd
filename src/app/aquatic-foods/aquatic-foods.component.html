@@ -3,6 +3,6 @@
     <app-aquatic-food-list (openDescription)="getValueOpenDescription($event)"></app-aquatic-food-list>
   </div>
     <div class="col-md-5">
-      <app-aquatic-food-detail [data]="openDescriptions" *ngIf="check==true"></app-aquatic-food-detail>
+      <router-outlet></router-outlet>
     </div>
   </div>

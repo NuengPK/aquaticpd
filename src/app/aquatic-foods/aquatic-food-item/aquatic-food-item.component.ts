@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { AquaticFoodService } from 'src/app/shared/aquatic-food.service';
 import { AquaticFood } from '../AquaticFood.model';
 
 @Component({
@@ -7,16 +8,13 @@ import { AquaticFood } from '../AquaticFood.model';
   styleUrls: ['./aquatic-food-item.component.css']
 })
 export class AquaticFoodItemComponent implements OnInit {
-  @Input() footLists!:{name: string, description:string, imagePath: string};
-  @Output() openDescription = new EventEmitter<{name: string, description:string, imagePath: string}>();
+  aquaticFood!:AquaticFood[];
 
-  emitOpenDescription(){
-    this.openDescription.emit(this.footLists)
-  }
+  constructor(private aquaticFoodService:AquaticFoodService) { }
 
-  constructor() { }
 
   ngOnInit(): void {
+    this.aquaticFood = this.aquaticFoodService.getAquaticFoods()
   }
 
 }

@@ -10,14 +10,11 @@ import { AquaticFood } from '../AquaticFood.model';
 export class AquaticFoodListComponent implements OnInit {
   @Output() openDescription = new EventEmitter<string>();
   datas = ""
-//  aquaticFood:[] = [];
   getValueOpenDescription(data:any){
     this.datas=data
     this.openDescription.emit(this.datas)
   }
-
-  constructor(private aquaticFoodService:AquaticFoodService) { }
-  aquaticFood = this.aquaticFoodService.getAquaticFood()
+  constructor() { }
   ngOnInit(): void {
   }
 

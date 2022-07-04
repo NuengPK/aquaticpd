@@ -12,7 +12,6 @@ export class AquaticFoodsComponent implements OnInit {
   getValueOpenDescription(openDescription:any){
     this.openDescriptions = openDescription;
     this.check = true;
-    console.log(this.openDescriptions)
   }
   constructor() { }
 

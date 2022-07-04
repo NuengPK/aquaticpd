@@ -7,9 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'aquaticpd';
-  openPage = "off"
 
-  onFeatureLoad(data:any){
-    this.openPage = data;
-  };
 };

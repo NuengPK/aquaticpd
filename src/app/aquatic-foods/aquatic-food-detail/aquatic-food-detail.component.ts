@@ -1,16 +1,23 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { AquaticFoodService } from 'src/app/shared/aquatic-food.service';
+import { AquaticFood } from '../AquaticFood.model';
 
 @Component({
   selector: 'app-aquatic-food-detail',
   templateUrl: './aquatic-food-detail.component.html',
-  styleUrls: ['./aquatic-food-detail.component.css']
+  styleUrls: ['./aquatic-food-detail.component.css'],
 })
 export class AquaticFoodDetailComponent implements OnInit {
-  @Input() data!:{name: string, description:string, imagePath: string};
+  data!:AquaticFood;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,private aquaticFoodService:AquaticFoodService) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.data = this.aquaticFoodService.OpenDescription(params['name'])!;
+      }
+    )
   }
-
 }
