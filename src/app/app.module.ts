@@ -9,7 +9,13 @@ import { AquaticFoodDetailComponent } from './aquatic-foods/aquatic-food-detail/
 import { AquaticFoodsComponent } from './aquatic-foods/aquatic-foods.component';
 import { DistributionListComponent } from './distribution-list/distribution-list.component';
 import { DistributionEditComponent } from './distribution-list/distribution-edit/distribution-edit.component';
+import { RouterModule, Routes } from '@angular/router';
 
+const appRoutes: Routes = [
+  { path: '', component: Headers },
+  { path: 'aquaticF', component: AquaticFoodsComponent },
+  { path: 'dis', component: DistributionListComponent }
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +29,7 @@ import { DistributionEditComponent } from './distribution-list/distribution-edit
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

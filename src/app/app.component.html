@@ -1,13 +1,14 @@
-<app-header (onoff)="onFeatureLoad($event)"></app-header>
+<app-header></app-header>
 <div class="container">
-  <div class="row" *ngIf="openPage === 'aquaticFood'">
+  <div class="row">
     <div class="col-md-12">
-      <app-aquatic-foods></app-aquatic-foods>
+      <router-outlet></router-outlet>
+      <!-- <app-aquatic-foods></app-aquatic-foods>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <app-distribution-list *ngIf="openPage === 'distribution'"></app-distribution-list>
+      <app-distribution-list *ngIf="openPage === 'distribution'"></app-distribution-list> -->
     </div>
   </div>
 </div>
