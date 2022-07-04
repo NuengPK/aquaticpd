@@ -14,6 +14,7 @@ import { PageNotFontComponent } from './page-not-font/page-not-font.component';
 //=======
 import { AquaticFoodService } from './shared/aquatic-food.service';
 import { DistridutionService } from './shared/distridution.service';
+import { AquaticEditComponent } from './aquatic-edit/aquatic-edit.component';
 //>>>>>>> Section---04-Service
 
 @NgModule({
@@ -26,7 +27,8 @@ import { DistridutionService } from './shared/distridution.service';
     AquaticFoodDetailComponent,
     DistributionListComponent,
     DistributionEditComponent,
-    PageNotFontComponent
+    PageNotFontComponent,
+    AquaticEditComponent
   ],
   imports: [
     BrowserModule,
