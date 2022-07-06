@@ -13,7 +13,7 @@ import { DistributionEditComponent } from './distribution-list/distribution-edit
 import { PageNotFontComponent } from './page-not-font/page-not-font.component';
 //=======
 import { AquaticFoodService } from './shared/aquatic-food.service';
-import { DistridutionService } from './shared/distridution.service';
+import { DistributionService } from './shared/distridution.service';
 import { AquaticEditComponent } from './aquatic-edit/aquatic-edit.component';
 //>>>>>>> Section---04-Service
 
@@ -34,7 +34,7 @@ import { AquaticEditComponent } from './aquatic-edit/aquatic-edit.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [AquaticFoodService,DistridutionService],
+  providers: [AquaticFoodService,DistributionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

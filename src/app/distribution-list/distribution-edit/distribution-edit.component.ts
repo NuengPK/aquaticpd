@@ -1,4 +1,7 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Distribution } from 'src/app/shared/distribution.model';
+import { DistributionService } from 'src/app/shared/distridution.service';
 
 @Component({
   selector: 'app-distribution-edit',
@@ -6,18 +9,25 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '
   styleUrls: ['./distribution-edit.component.css']
 })
 export class DistributionEditComponent implements OnInit {
-  @Output() addDistridutionInput = new EventEmitter<{name: string, qunatity: string}>();
-
   @ViewChild('aquaticNameInput') aquaticNameInput!:ElementRef;
   @ViewChild('qunatityInput') qunatityInput!:ElementRef;
-  constructor() { }
-
+  constructor(private distributionService:DistributionService,
+              private route:ActivatedRoute) { }
+              distribution!:Distribution
   addDistridutionOnEdit(){
-  this.addDistridutionInput.emit({name:this.aquaticNameInput.nativeElement.value,qunatity:this.qunatityInput.nativeElement.value})
-
+    if(this.aquaticNameInput.nativeElement.value.trim()!==''){
+      this.distributionService.addDistridutionOnService(this.aquaticNameInput.nativeElement.value.trim(),parseInt(this.qunatityInput.nativeElement.value))
+    }
   };
-
+  updateDistridutionOnEdit(){
+    this.distributionService.updateDistridutionOnService(this.aquaticNameInput.nativeElement.value,parseInt(this.qunatityInput.nativeElement.value))
+  }
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.distribution = this.distributionService.addValueOnInput(params['name'])!;
+      }
+    )
   }
 
 }

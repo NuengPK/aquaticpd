@@ -8,12 +8,6 @@ import { AquaticFood } from '../AquaticFood.model';
   styleUrls: ['./aquatic-food-list.component.css']
 })
 export class AquaticFoodListComponent implements OnInit {
-  @Output() openDescription = new EventEmitter<string>();
-  datas = ""
-  getValueOpenDescription(data:any){
-    this.datas=data
-    this.openDescription.emit(this.datas)
-  }
   constructor() { }
   ngOnInit(): void {
   }

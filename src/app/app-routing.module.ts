@@ -8,6 +8,7 @@ import { PageNotFontComponent } from './page-not-font/page-not-font.component';
 
 
 const routes: Routes = [
+  { path: '', component: AquaticFoodsComponent},
   { path: 'AquaticFoods', component: AquaticFoodsComponent ,children:[
     {path: 'new',component: AquaticEditComponent},
     {path: 'detail/:name',component: AquaticFoodDetailComponent},
