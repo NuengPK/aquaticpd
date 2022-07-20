@@ -1,16 +1,16 @@
-<div *ngFor="let footList of aquaticFood">
-    <a [routerLink]="['/AquaticFoods','detail',footList.name]" routerLinkActive="active" class="list-group-item clearfix">
+<div *ngFor="let foodList of aquaticFood">
+    <a [routerLink]="['/AquaticFoods','detail',foodList.name]" routerLinkActive="active" class="list-group-item clearfix">
       <div class="float-start">
         <span>
-        <h4 class="list-group-item-heading">{{footList.name}}</h4>
-        <p class="list-group-item-text">{{footList.description}}</p>
+        <h4 class="list-group-item-heading">{{foodList.name}}</h4>
+        <p class="list-group-item-text">{{foodList.description}}</p>
       </span>
 
       </div>
       <div class="float-end border">
         <img
-        src={{footList.imagePath}}
-        alt={{footList.name}}
+        src={{foodList.imagePath}}
+        alt={{foodList.name}}
         class="img-responsive"
         style="max-width:50px;">
       </div>

@@ -1,5 +1,6 @@
 import { fingerprint } from '@angular/compiler/src/i18n/digest';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Distribution } from './distribution.model';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class DistributionService {
     new Distribution('ปลาอินทรี', 10),
     new Distribution('หมึก', 20),
   ];
-  constructor() {}
+  constructor(private route:ActivatedRoute) {}
 
   getDistridution() {
     return this.distritions;
@@ -36,12 +37,12 @@ export class DistributionService {
       }
     });
   }
-  addValueOnInput(name:string){
-    const detail = this.distritions.find(
+  addValueOnInput(value:string){
+    const dis = this.distritions.find(
       (v)=>{
-        return v.name == name
+        return v.name == value
       }
-    )
-    return detail
+    );
+    return dis
   }
 }

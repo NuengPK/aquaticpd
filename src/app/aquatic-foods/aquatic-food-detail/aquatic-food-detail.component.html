@@ -1,15 +1,15 @@
 <div class="row">
   <div class="col-12">
     <img
-    src="{{data.imagePath}}"
-    alt="{{data.name}}"
+    src="{{aquaticFood.imagePath}}"
+    alt="{{aquaticFood.name}}"
     class="img-fluid">
   </div>
 </div>
 <div class="row">
   <div class="col-12">
     <h2>
-      {{data.name}}
+      {{aquaticFood.name}}
     </h2>
   </div>
 </div>
@@ -26,19 +26,19 @@
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li><a class="dropdown-item">Add Received Qty</a></li>
-        <li><a class="dropdown-item" [routerLink]="['/AquaticFoods','detail',data.name,'index','edit']">Edit Received Qty</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/AquaticFoods','detail',aquaticFood.name,'index','edit']">Edit Received Qty</a></li>
       </ul>
     </div>
   </div>
 </div>
 <div class="row">
   <div class="col-12">
-    {{data.description}}
+    {{aquaticFood.description}}
   </div>
 </div>
 <div class="row">
   <div class="col-12">
-    <h4>{{data.quantity}}  &  {{data.onHand}}</h4>
+    <h4>{{aquaticFood.quantity}}  &  {{aquaticFood.onHand}}</h4>
     Aquatic Food Received Qty & on Hands
   </div>
 </div>
