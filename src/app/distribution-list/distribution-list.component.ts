@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Distribution } from '../shared/distribution.model';
 import { DistributionService } from '../shared/distridution.service';
 
@@ -8,6 +9,8 @@ import { DistributionService } from '../shared/distridution.service';
   styleUrls: ['./distribution-list.component.css'],
 })
 export class DistributionListComponent implements OnInit {
+
+
 
   constructor(private distributionService:DistributionService) {}
   distributions!:Distribution[];
