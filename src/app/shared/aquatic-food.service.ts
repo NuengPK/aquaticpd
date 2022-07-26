@@ -17,6 +17,9 @@ export class AquaticFoodService{
     )
     return detail
   }
+  addAquaticFood(name:string,qty:number,url:string,detail:string){
+    this.aquaticFoods.push(new AquaticFood(name, detail, url, qty, 0))
+  }
 }
 
 //ng generate service <service name>

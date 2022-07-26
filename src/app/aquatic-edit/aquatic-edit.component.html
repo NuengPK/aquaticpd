@@ -1,2 +1,96 @@
-<h1 class="display-4">aquatic-edit works!</h1>
-
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="mb-3">
+      <button
+        [disabled]="signupForm.invalid"
+        type="submit"
+        class="btn btn-success"
+      >
+        Save
+      </button>
+      <button
+        type="button"
+        routerLink="/AquaticFoods"
+        class="ms-1 btn btn-danger"
+      >
+        Cancel
+      </button>
+      <button
+        *ngIf="
+          signupForm.get('name')?.value ||
+          signupForm.get('quantity')?.value ||
+          signupForm.get('url')?.value ||
+          signupForm.get('detail')?.value
+        "
+        type="button"
+        class="ms-1 btn btn-warning"
+        (click)="onClear()"
+      >
+        Clear
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mb-3">
+      <label class="form-label" for="">ชื่อสินค้า</label>
+      <input class="form-control" type="text" formControlName="name" #nameInput/>
+      <span
+        *ngIf="
+          !signupForm.get('name')?.value && signupForm.get('name')?.touched
+        "
+        class="telp-block mb-2"
+        >กรุณากรอกใหม่</span
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="mb-3">
+      <label class="form-label" for="">รับจำนวน</label>
+      <input class="form-control" type="text" formControlName="quantity" #quantityInput/>
+      <span
+        *ngIf="
+          !signupForm.get('quantity')?.value &&
+          signupForm.get('quantity')?.touched
+        "
+        class="telp-block mb-2"
+        >กรุณากรอกใหม่</span
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="mb-3">
+      <label class="form-label" for="">URL ของภาพประกอบ</label>
+      <input class="form-control" type="text" formControlName="url" #urlInput/>
+      <span
+        *ngIf="!signupForm.get('url')?.value && signupForm.get('url')?.touched"
+        class="telp-block mb-2"
+        >กรุณากรอกใหม่</span
+      >
+      <img
+        class="md-3 mt-3 col-12"
+        *ngIf="signupForm.get('url')?.value && signupForm.get('url')?.touched"
+        src="{{ signupForm.value.url }}"
+        alt=""
+      />
+      <img
+        class="md-3 mt-3 col-12"
+        *ngIf="!signupForm.get('url')?.value"
+        src="https://img.lovepik.com/free-png/20210927/lovepik-camera-icon-png-image_401572796_wh1200.png"
+        alt=""
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >รายละเอียดเกี่ยวกับสินค้า</label
+      >
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        formControlName="detail"
+      #detailTextarea></textarea>
+    </div>
+  </div>
+</form>

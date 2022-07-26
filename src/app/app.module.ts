@@ -15,6 +15,7 @@ import { PageNotFontComponent } from './page-not-font/page-not-font.component';
 import { AquaticFoodService } from './shared/aquatic-food.service';
 import { DistributionService } from './shared/distridution.service';
 import { AquaticEditComponent } from './aquatic-edit/aquatic-edit.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //>>>>>>> Section---04-Service
 
 @NgModule({
@@ -32,7 +33,9 @@ import { AquaticEditComponent } from './aquatic-edit/aquatic-edit.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [AquaticFoodService,DistributionService],
   bootstrap: [AppComponent]
