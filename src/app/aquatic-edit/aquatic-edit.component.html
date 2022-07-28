@@ -22,9 +22,8 @@
           signupForm.get('url')?.value ||
           signupForm.get('detail')?.value
         "
-        type="button"
+        type="reset"
         class="ms-1 btn btn-warning"
-        (click)="onClear()"
       >
         Clear
       </button>
@@ -33,7 +32,12 @@
   <div class="row">
     <div class="mb-3">
       <label class="form-label" for="">ชื่อสินค้า</label>
-      <input class="form-control" type="text" formControlName="name" #nameInput/>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="name"
+        #nameInput
+      />
       <span
         *ngIf="
           !signupForm.get('name')?.value && signupForm.get('name')?.touched
@@ -46,7 +50,12 @@
   <div class="row">
     <div class="mb-3">
       <label class="form-label" for="">รับจำนวน</label>
-      <input class="form-control" type="text" formControlName="quantity" #quantityInput/>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="quantity"
+        #quantityInput
+      />
       <span
         *ngIf="
           !signupForm.get('quantity')?.value &&
@@ -60,7 +69,7 @@
   <div class="row">
     <div class="mb-3">
       <label class="form-label" for="">URL ของภาพประกอบ</label>
-      <input class="form-control" type="text" formControlName="url" #urlInput/>
+      <input class="form-control" type="text" formControlName="url" #urlInput />
       <span
         *ngIf="!signupForm.get('url')?.value && signupForm.get('url')?.touched"
         class="telp-block mb-2"
@@ -90,7 +99,28 @@
         id="exampleFormControlTextarea1"
         rows="3"
         formControlName="detail"
-      #detailTextarea></textarea>
+        #detailTextarea
+      ></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="md-3">
+      <h4>ตัวอย่าง ชื่อเมนูอาหาร จากวัตถุดิบนี้</h4>
+      <div class="row mt-1" *ngFor="let manuControl of controls; let i = index">
+        <div class="btn-group">
+          <input type="text" class="ms-1 form-control" [formControlName]="i" />
+          <button
+            class="btn btn-danger"
+            type="button"
+            (click)="onDeleteMenu(i)"
+          >
+            X
+          </button>
+        </div>
+      </div>
+      <button class="mt-2 btn btn-success" type="button" (click)="onAddMenu()">
+        Add menu
+      </button>
     </div>
   </div>
 </form>

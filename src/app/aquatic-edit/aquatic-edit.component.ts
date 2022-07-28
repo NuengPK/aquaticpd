@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AquaticFoodService } from '../shared/aquatic-food.service';
 
@@ -24,17 +24,25 @@ export class AquaticEditComponent implements OnInit {
       'quantity': new FormControl(null,Validators.required),
       'url': new FormControl(null,Validators.required),
       'detail': new FormControl(null,Validators.required),
+      'menu': new FormArray([])
     })
   }
 
   onSubmit(){
     this.aquaticFoodService.addAquaticFood(this.signupForm.value.name,this.signupForm.value.quantity,this.signupForm.value.url,this.signupForm.value.detail)
     console.log(this.signupForm)
+    this.signupForm.reset
   }
-  onClear(){
-    this.name.nativeElement.value = ''
-    this.quantity.nativeElement.value = ''
-    this.url.nativeElement.value = ''
-    this.detail.nativeElement.value = ''
+  onAddMenu(){
+    const controls = new FormControl(null,Validators.required);
+    (<FormArray>this.signupForm.get('menu')).push(controls);
   }
+  onDeleteMenu(i:number){
+    (<FormArray>this.signupForm.get('menu')).removeAt(i);
+  }
+  get controls() {
+    return(this.signupForm.get('menu') as FormArray).controls;
+  }
+
+
 }
