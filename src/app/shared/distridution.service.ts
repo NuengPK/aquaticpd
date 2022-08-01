@@ -18,17 +18,17 @@ export class DistributionService {
   getDistridution() {
     return this.distritions;
   }
-  addDistridutionOnService(name: string, quantity: number) {
-    let checkName:boolean = false;
+  addDistridutionOnService(name: string, quantity: number ) {
+    let checkName = false;
     this.distritions.map((value: Distribution, index: number, array: Distribution[]) => {
       if (value.name === name) {
-        value.quantity += quantity;
         checkName = true
       } else {
         return
       }
     });
     if(checkName === false){ this.distritions.push(new Distribution( name, quantity ));}
+    return checkName
   }
     updateDistridutionOnService(name: string, quantity: number) {
     this.distritions.find((s) => {
@@ -46,5 +46,12 @@ export class DistributionService {
       }
     );
     return dis
+  }
+  deleteDistridutionOnService(name:string){
+    this.distritions.map((value: Distribution, index: number) => {
+      if (name === value.name) {
+        this.distritions.splice(index, 1);
+      }
+    });
   }
 }

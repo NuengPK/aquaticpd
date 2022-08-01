@@ -8,9 +8,12 @@
         aria-label="Aquatic Name"
         ngModel
         name="aquaticNameInput"
+        #nameInput="ngModel"
         [ngModel]="distribution.name"
         required
       />
+      <span *ngIf="nameInput.invalid && nameInput.touched">กรุณากรอกชื่อ</span>
+      <span *ngIf="checkName === true">ชื่อซ้ำ</span>
     </div>
     <div class="col">
       <input
@@ -21,15 +24,20 @@
         [files]=""
         ngModel
         name="qunatityInput"
+        #qtyInput="ngModel"
         [ngModel]="distribution.quantity"
         required
         pattern="[0-9]+"
       />
+      <span *ngIf="qtyInput.invalid && qtyInput.touched"
+        >กรุณากรอกเลข และตัวเลขไม่ควรติดลบ</span
+      >
     </div>
   </div>
   <div class="row mb-2">
     <div class="col">
       <button
+        *ngIf="!checkUpDate"
         type="submit"
         class="btn btn-success me-2"
         (click)="addDistridutionOnEdit()"
@@ -38,14 +46,30 @@
         Add
       </button>
       <button
+        *ngIf="checkUpDate"
         type="button"
-        class="btn btn-danger me-2"
+        class="btn btn-success me-2"
         (click)="updateDistridutionOnEdit()"
         [disabled]="f.invalid"
       >
         Update
       </button>
-      <button type="reset" class="btn btn-primary me-2">Clear</button>
+      <button
+        type="button"
+        class="btn btn-danger me-2"
+        [disabled]="!checkUpDate"
+        (click)="onDelete()"
+      >
+        Delete
+      </button>
+      <button
+        type="reset"
+        class="btn btn-primary me-2"
+        [disabled]="f.invalid"
+        (click)="onClear()"
+      >
+        Clear
+      </button>
     </div>
   </div>
 </form>

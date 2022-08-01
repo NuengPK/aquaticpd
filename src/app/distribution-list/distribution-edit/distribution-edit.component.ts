@@ -1,8 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Distribution } from 'src/app/shared/distribution.model';
 import { DistributionService } from 'src/app/shared/distridution.service';
@@ -14,29 +10,30 @@ import { DistributionService } from 'src/app/shared/distridution.service';
 })
 export class DistributionEditComponent implements OnInit {
   @ViewChild('f') signupForm!: NgForm;
-
+  checkName!: boolean;
+  checkUpDate!: boolean;
   distribution!: Distribution;
 
-  constructor(
-    private distributionService: DistributionService
-  ) {}
+  constructor(private distributionService: DistributionService) {}
   ngOnInit(): void {
-    this.distribution ={
-      name: "",
-      quantity: 0
+    this.checkName = false;
+    this.checkUpDate = false;
+    this.distribution = {
+      name: '',
+      quantity: NaN,
     };
-    this.distributionService.activedtedEmitter.subscribe(
-      (distribution)=>{
-        this.distribution = distribution
-      }
-    )
+    this.distributionService.activedtedEmitter.subscribe((distribution) => {
+      this.distribution = distribution;
+      this.checkUpDate = true;
+    });
   }
   addDistridutionOnEdit() {
     if (this.signupForm.valid) {
-      this.distributionService.addDistridutionOnService(
+      this.checkName = this.distributionService.addDistridutionOnService(
         this.signupForm.value.aquaticNameInput,
         parseInt(this.signupForm.value.qunatityInput)
-      );
+      )
+
     }
   }
   updateDistridutionOnEdit() {
@@ -44,5 +41,13 @@ export class DistributionEditComponent implements OnInit {
       this.signupForm.value.aquaticNameInput,
       parseInt(this.signupForm.value.qunatityInput)
     );
+  }
+  onClear() {
+    this.checkUpDate = false;
+  }
+  onDelete() {
+    this.distributionService.deleteDistridutionOnService(this.distribution.name)
+    this.checkUpDate = false;
+    this.signupForm.reset();
   }
 }
