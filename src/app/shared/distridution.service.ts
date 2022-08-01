@@ -1,12 +1,14 @@
 import { fingerprint } from '@angular/compiler/src/i18n/digest';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Subject } from 'rxjs';
 import { Distribution } from './distribution.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DistributionService {
+  activedtedEmitter = new Subject<Distribution>();
   private distritions: Distribution[] = [
     new Distribution('ปลาอินทรี', 10),
     new Distribution('หมึก', 20),

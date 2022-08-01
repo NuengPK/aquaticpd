@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSupmit(f)" #f="ngForm">
+<form #f="ngForm">
   <div class="row mb-2">
     <div class="col">
       <input
@@ -6,7 +6,9 @@
         class="form-control"
         placeholder="Aquatic Name"
         aria-label="Aquatic Name"
-        ngModel name="aquaticNameInput"
+        ngModel
+        name="aquaticNameInput"
+        [ngModel]="distribution.name"
         required
       />
     </div>
@@ -17,7 +19,9 @@
         placeholder="Qty"
         aria-label="qunatity"
         [files]=""
-        ngModel name="qunatityInput"
+        ngModel
+        name="qunatityInput"
+        [ngModel]="distribution.quantity"
         required
         pattern="[0-9]+"
       />
@@ -25,10 +29,23 @@
   </div>
   <div class="row mb-2">
     <div class="col">
-        <button type="submit" class="btn btn-success me-2" (click)="addDistridutionOnEdit()"
-        [disabled]="f.invalid">Add</button>
-        <button type="button" class="btn btn-danger me-2" (click)="updateDistridutionOnEdit()">Update</button>
-        <button type="button" class="btn btn-primary me-2">Clear</button>
+      <button
+        type="submit"
+        class="btn btn-success me-2"
+        (click)="addDistridutionOnEdit()"
+        [disabled]="f.invalid"
+      >
+        Add
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger me-2"
+        (click)="updateDistridutionOnEdit()"
+        [disabled]="f.invalid"
+      >
+        Update
+      </button>
+      <button type="reset" class="btn btn-primary me-2">Clear</button>
     </div>
   </div>
 </form>

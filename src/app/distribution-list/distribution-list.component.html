@@ -1,16 +1,21 @@
-
 <h3>Distribution List</h3>
 <div class="row">
   <div class="col-md-12">
-    <app-distribution-edit ></app-distribution-edit>
+    <app-distribution-edit></app-distribution-edit>
   </div>
 </div>
 <div class="row">
   <div class="col-md-10">
     <ul class="list-group">
-      <a [routerLink]="['/DistributionList',item.name]" *ngFor="let item of distributions" class="list-group-item" style="cursor: pointer;">
-        {{ item.name }} -- ({{ item.quantity }})
-      </a>
+      <div
+        *ngFor="let item of distributions"
+        class="list-group-item"
+        style="cursor: pointer"
+      >
+        <div (click)="onInput(item)">
+          <a> {{ item.name }} -- ({{ item.quantity }}) </a>
+        </div>
+      </div>
     </ul>
   </div>
 </div>
