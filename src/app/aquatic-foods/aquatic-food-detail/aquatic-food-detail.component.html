@@ -1,44 +1,67 @@
-<div class="row">
-  <div class="col-12">
-    <img
-    src="{{aquaticFood.imagePath}}"
-    alt="{{aquaticFood.name}}"
-    class="img-fluid">
-  </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <h2>
-      {{aquaticFood.name}}
-    </h2>
-  </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <div class="dropdown">
-      <button
-      class="btn btn-primary dropdown-toggle"
-      type="button"
-      id="dropdownMenuButton1"
-      data-bs-toggle="dropdown"
-      aria-expanded="false">
-        Manage Aquatic Food & On Hand
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item">Add Received Qty</a></li>
-        <li><a class="dropdown-item" [routerLink]="['/AquaticFoods','detail',aquaticFood.name,'index','edit']">Edit Received Qty</a></li>
-      </ul>
+<div *ngIf="aquaticFood">
+  <div class="row">
+    <div class="col-12">
+      <img
+        src="{{ aquaticFood.imagePath }}"
+        alt="{{ aquaticFood.name }}"
+        class="img-fluid"
+      />
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    {{aquaticFood.description}}
+  <div class="row">
+    <div class="col-12">
+      <h2>
+        {{ aquaticFood.name }}
+      </h2>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <h4>{{aquaticFood.quantity}}  &  {{aquaticFood.onHand}}</h4>
-    Aquatic Food Received Qty & on Hands
+  <div class="row">
+    <div class="col-12">
+      <div class="dropdown">
+        <button
+          class="btn btn-primary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Manage Aquatic Food & On Hand
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li>
+            <a
+              class="dropdown-item"
+              [routerLink]="[
+                '/AquaticFoods',
+                'detail',
+                aquaticFood.name,
+                'index',
+                'edit'
+              ]"
+              >Update Aquatic</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              (click)="onDeleteAquatic()"
+              routerLink="/AquaticFoods"
+              >Delete Aquatic</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      {{ aquaticFood.description }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h4>{{ aquaticFood.quantity }} & {{ aquaticFood.onHand }}</h4>
+      Aquatic Food Received Qty & on Hands
+    </div>
   </div>
 </div>
