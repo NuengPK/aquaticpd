@@ -55,7 +55,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-      {{ aquaticFood.description }}
+      {{ aquaticFood.description }} <span *ngFor="let item of aquaticFood.menu"> {{item}} </span>
     </div>
   </div>
   <div class="row">

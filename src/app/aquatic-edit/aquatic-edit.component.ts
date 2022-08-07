@@ -61,15 +61,27 @@ export class AquaticEditComponent implements OnInit {
         {name:this.signupForm.value.name,
         description:this.signupForm.value.detail,
         imagePath:this.signupForm.value.url,
-        onHand:this.signupForm.value.quantity,quantity:0
+        onHand:this.signupForm.value.quantity,
+        quantity:0,
+        menu:this.signupForm.value.menu
       };
+      console.log(upDateAquatic)
       this.aquaticFoodService.upDateAquatic(this.checkNewOrEdit,upDateAquatic);
     } else {
+      const addAquatic: AquaticFood =
+        {name:this.signupForm.value.name,
+        description:this.signupForm.value.detail,
+        imagePath:this.signupForm.value.url,
+        onHand:this.signupForm.value.quantity,
+        quantity:0,
+        menu:this.signupForm.value.menu//เตรียมใส่ข้อมูลให้กับAddAq
+      };
       this.aquaticFoodService.addAquaticFood(
         this.signupForm.value.name,
         this.signupForm.value.quantity,
         this.signupForm.value.url,
-        this.signupForm.value.detail
+        this.signupForm.value.detail,
+        this.signupForm.value.menu
       );
     }
 
