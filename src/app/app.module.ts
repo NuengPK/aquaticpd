@@ -16,6 +16,9 @@ import { AquaticFoodService } from './shared/aquatic-food.service';
 import { DistributionService } from './shared/distridution.service';
 import { AquaticEditComponent } from './aquatic-edit/aquatic-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {  HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+import { LoggingInterceptor } from './logging.interceptor';
 //>>>>>>> Section---04-Service
 
 @NgModule({
@@ -35,9 +38,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [AquaticFoodService,DistributionService],
+  providers: [AquaticFoodService,DistributionService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi:true},{
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoggingInterceptor,
+    multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

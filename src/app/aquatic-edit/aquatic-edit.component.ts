@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AquaticFood } from '../aquatic-foods/AquaticFood.model';
 import { AquaticFoodService } from '../shared/aquatic-food.service';
+import { CalculateQuatityService } from '../shared/calculate-quatity.service';
 
 @Component({
   selector: 'app-aquatic-edit',
@@ -20,7 +21,8 @@ export class AquaticEditComponent implements OnInit {
   aquaticInput!: AquaticFood | undefined;
   constructor(
     private route: ActivatedRoute,
-    private aquaticFoodService: AquaticFoodService
+    private aquaticFoodService: AquaticFoodService,
+    private calculateQuatityService:CalculateQuatityService
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +44,7 @@ export class AquaticEditComponent implements OnInit {
       this.signupForm = new FormGroup({
         name: new FormControl(this.aquaticInput.name, Validators.required),
         quantity: new FormControl(
-          this.aquaticInput.onHand,
+          this.aquaticInput.quantity,
           Validators.required
         ),
         url: new FormControl(this.aquaticInput.imagePath, Validators.required),
@@ -61,8 +63,8 @@ export class AquaticEditComponent implements OnInit {
         {name:this.signupForm.value.name,
         description:this.signupForm.value.detail,
         imagePath:this.signupForm.value.url,
-        onHand:this.signupForm.value.quantity,
-        quantity:0,
+        quantity:this.signupForm.value.quantity,
+        onHand:0,
         menu:this.signupForm.value.menu
       };
       console.log(upDateAquatic)
@@ -72,8 +74,8 @@ export class AquaticEditComponent implements OnInit {
         {name:this.signupForm.value.name,
         description:this.signupForm.value.detail,
         imagePath:this.signupForm.value.url,
-        onHand:this.signupForm.value.quantity,
         quantity:0,
+        onHand:this.signupForm.value.quantity,
         menu:this.signupForm.value.menu//เตรียมใส่ข้อมูลให้กับAddAq
       };
       this.aquaticFoodService.addAquaticFood(
@@ -81,10 +83,11 @@ export class AquaticEditComponent implements OnInit {
         this.signupForm.value.quantity,
         this.signupForm.value.url,
         this.signupForm.value.detail,
-        this.signupForm.value.menu
+        this.signupForm.value.menu,
+        0
       );
     }
-
+    this.calculateQuatityService.calculate()
     console.log(this.signupForm);
     this.signupForm.reset();
   }

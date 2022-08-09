@@ -1,20 +1,51 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container-fluid">
-      <a routerLink="/" class="navbar-brand">Aquatic Food PD</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collaspe navbar-collapse" id="navbarSupportedContent">
+    <a routerLink="/" class="navbar-brand">Aquatic Food PD</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collaspe navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <a routerLink="/AquaticFoods"
-      routerLinkActive="active" class="nav-link" >Aquatic Food</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/DistributionList"
-        [routerLinkActive]="['active']" class="nav-link" >Distribution</a>
-      </li>
-    </ul>
-  </div>
+        <li class="nav-item">
+          <a
+            routerLink="/AquaticFoods"
+            routerLinkActive="active"
+            class="nav-link"
+            >Aquatic Food</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            routerLink="/DistributionList"
+            [routerLinkActive]="['active']"
+            class="nav-link"
+            >Distribution</a
+          >
+        </li>
+      </ul>
+      <div class="dropdown">
+        <button
+          class="btn btn-light dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Manage
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li>
+            <a class="dropdown-item" (click)="onCreatePosts()">Save Data</a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="onFetchPost()">Fetch Data</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </nav>
