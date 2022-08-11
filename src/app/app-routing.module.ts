@@ -9,7 +9,7 @@ import { DistributionListComponent } from './distribution-list/distribution-list
 import { PageNotFontComponent } from './page-not-font/page-not-font.component';
 
 const routes: Routes = [
-  { path: '', component: AquaticFoodsComponent },
+  { path: '',redirectTo: '/AquaticFoods', pathMatch: 'full' },
   {
     path: 'AquaticFoods',
     component: AquaticFoodsComponent,
