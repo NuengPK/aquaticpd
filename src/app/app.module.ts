@@ -17,8 +17,11 @@ import { DistributionService } from './shared/distridution.service';
 import { AquaticEditComponent } from './aquatic-edit/aquatic-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {  HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './auth.interceptor';
-import { LoggingInterceptor } from './logging.interceptor';
+import { AuthComponent } from './auth/auth.component';
+import { LoadingSinnerComponent } from './loading-sinner/loading-sinner.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { AlertComponent } from './shared/alert/alert.component';
+import { PlaceholderDirective } from './shared/placeholder.directive';
 //>>>>>>> Section---04-Service
 
 @NgModule({
@@ -32,7 +35,11 @@ import { LoggingInterceptor } from './logging.interceptor';
     DistributionListComponent,
     DistributionEditComponent,
     PageNotFontComponent,
-    AquaticEditComponent
+    AquaticEditComponent,
+    AuthComponent,
+    LoadingSinnerComponent,
+    AlertComponent,
+    PlaceholderDirective
   ],
   imports: [
     BrowserModule,
@@ -41,13 +48,13 @@ import { LoggingInterceptor } from './logging.interceptor';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AquaticFoodService,DistributionService,{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi:true},{
-    provide: HTTP_INTERCEPTORS,
-    useClass: LoggingInterceptor,
-    multi:true}],
+  providers: [AquaticFoodService,DistributionService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

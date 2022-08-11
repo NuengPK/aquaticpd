@@ -1,0 +1,36 @@
+<ng-template appPlaceholder></ng-template>
+<div class="row mt-4">
+  <div class="col-12 col-md-6 offset-md-3">
+    <!-- <div class="alert alert-danger">
+      <p>{{error}}</p>
+    </div> -->
+    <app-alert (close)="onHandleAlert()" [message]="error" *ngIf="error" ></app-alert>
+    <div *ngIf="isLoading" class="mt-5">
+      <app-loading-sinner></app-loading-sinner>
+    </div>
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+      <div class="form-floating md-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+        ngModel
+        name="email"
+        required
+        email>
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating md-3">
+        <input type="text" class="form-control" id="floatingPassword" placeholder="Password"
+        ngModel
+        name="password"
+        required
+        minlength="8">
+        <label for="floatingPassword">Password</label>
+      </div>
+      <div>
+        <button class="btn btn-primary me-3" type="submit"
+        [disabled]="!authForm.valid">{{isLoginMode?'Login':'Sing Up'}}</button>
+        <button class="btn btn-success" type="button"
+          (click)="onSwitchMode()">Pwith to {{!isLoginMode?'Login':'Sing Up'}}</button>
+      </div>
+    </form>
+  </div>
+</div>

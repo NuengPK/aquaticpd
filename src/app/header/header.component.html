@@ -11,12 +11,20 @@
     </button>
     <div class="collaspe navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isAuthenticate">
           <a
             routerLink="/AquaticFoods"
             routerLinkActive="active"
             class="nav-link"
             >Aquatic Food</a
+          >
+        </li><li class="nav-item">
+          <a
+            routerLink="/auth"
+            routerLinkActive="active"
+            class="nav-link"
+            *ngIf="!isAuthenticate"
+            >Authentication</a
           >
         </li>
         <li class="nav-item">
@@ -27,10 +35,18 @@
             >Distribution</a
           >
         </li>
-      </ul>
-      <div class="dropdown">
+      </ul><div class="nav-item" *ngIf="isAuthenticate">
+          <a
+            style="cursor: pointer"
+            class="nav-link"
+            (click)="onLogout()"
+            >logout</a
+          >
+        </div>
+      <div class="dropdown" *ngIf="isAuthenticate">
         <button
-          class="btn btn-light dropdown-toggle"
+          class="nav-link btn btn-light dropdown-toggle"
+          style="cursor: pointer"
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -39,10 +55,10 @@
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
-            <a class="dropdown-item" (click)="onCreatePosts()">Save Data</a>
+            <a class="dropdown-item" (click)="onCreateAquatic()">Save Data</a>
           </li>
           <li>
-            <a class="dropdown-item" (click)="onFetchPost()">Fetch Data</a>
+            <a class="dropdown-item" (click)="onFetchAquatic()">Fetch Data</a>
           </li>
         </ul>
       </div>

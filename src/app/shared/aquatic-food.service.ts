@@ -1,7 +1,7 @@
 import { AquaticFood } from '../aquatic-foods/AquaticFood.model';
 
 export class AquaticFoodService {
-  private aquaticFoods: AquaticFood[] = [//];
+  private aquaticFoods: AquaticFood[] = [
     new AquaticFood(
       'ปลาอินทรี',
       'กินที อร่อยทั้งเรือน',

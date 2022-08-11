@@ -1,99 +1,61 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { exhaustMap, map, take } from 'rxjs';
 import { AquaticFood } from '../aquatic-foods/AquaticFood.model';
+import { User } from '../auth/user.model';
 import { AquaticFoodService } from './aquatic-food.service';
+import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root',
 })
 export class DataStorageService {
   url =
     'https://aquatic-example-default-rtdb.asia-southeast1.firebasedatabase.app/post.json';
-  loadedPost!: AquaticFood[];
+  aquaticFoods!: AquaticFood[];
 
   constructor(
     private http: HttpClient,
-    private aquaticFoodService: AquaticFoodService
+    private aquaticFoodService: AquaticFoodService,
+    private authService: AuthService
   ) {}
 
-  createPost() {
-    return this.http.put(this.url, this.aquaticFoodService.getAquaticFoods()).subscribe(() => {});
+  createAquatic() {
+        return this.http.put<AquaticFood[]>(this.url, this.aquaticFoodService.getAquaticFoods())
+        .subscribe((responseData)=>{
+          return responseData? 'บันทึกสำเร็จ':'บันทึกไม่สำเร็จ'
+        })
   }
-
-  fetchPost() {
-    this.aquaticFoodService.onfetchPostToArray()
-        this.http
-          .get<{ [key: string]: AquaticFood }>(this.url)
-          .pipe(
-            map((responseData) => {
-              for (let key in responseData) {
-                if (responseData.hasOwnProperty(key)) {
-                  this.aquaticFoodService.addAquaticFood(
-                    responseData[key].name,
-                    responseData[key].quantity,
-                    responseData[key].imagePath,
-                    responseData[key].description,
-                    responseData[key].menu,
-                    responseData[key].onHand
-                  );
-                }
-              }
-            })
-          )
-          .subscribe(() => {});
-        return this.loadedPost;
-      }
-  deletePost(){
-    return this.http.delete(this.url)
+  fetchAquatic() {
+    return this.authService.userSubject
+      .pipe(
+        take(1),
+        exhaustMap((user) => {
+          return this.http.get<AquaticFood[]>(this.url, {
+            params: new HttpParams().set('auth', <string>user?.token),
+          });
+        }),
+        map((responseData) => {
+          const postArray: AquaticFood[] = [];
+          this.aquaticFoodService.onfetchPostToArray()
+          for (let key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              postArray.push({ ...responseData[key] });
+              this.aquaticFoodService.addAquaticFood(
+                responseData[key].name,
+                responseData[key].quantity,
+                responseData[key].imagePath,
+                responseData[key].description,
+                responseData[key].menu,
+                responseData[key].onHand
+              );
+            }
+          }
+          return this.aquaticFoods;
+        })
+      )
+      .subscribe(() => {});
+  }
+  deletePost() {
+    return this.http.delete(this.url);
   }
 }
-// import { HttpClient } from '@angular/common/http';
-// import { Injectable } from '@angular/core';
-// import { map } from 'rxjs';
-// import { AquaticFood } from '../aquatic-foods/AquaticFood.model';
-// import { AquaticFoodService } from './aquatic-food.service';
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class DataStorageService {
-//   url =
-//     'https://aquatic-example-default-rtdb.asia-southeast1.firebasedatabase.app/post.json';
-//   loadedPost!: AquaticFood[];
-
-//   constructor(
-//     private http: HttpClient,
-//     private aquaticFoodService: AquaticFoodService
-//   ) {}
-
-//   createPost() {
-//     return this.aquaticFoodService.getAquaticFoods().map((value: AquaticFood) => {
-//       this.http.post(this.url, value).subscribe(() => {});
-//     });
-//   }
-
-//   fetchPost() {
-//     this.http
-//       .get<{ [key: string]: AquaticFood }>(this.url)
-//       .pipe(
-//         map((responseData) => {
-//           for (let key in responseData) {
-//             if (responseData.hasOwnProperty(key)) {
-//               this.aquaticFoodService.addAquaticFood(
-//                 responseData[key].name,
-//                 responseData[key].quantity,
-//                 responseData[key].imagePath,
-//                 responseData[key].description,
-//                 responseData[key].menu,
-//                 responseData[key].onHand
-//               );
-//             }
-//           }
-//         })
-//       )
-//       .subscribe(() => {});
-//     return this.loadedPost;
-//   }
-//   deletePost(){
-//     return this.http.delete(this.url)
-//   }
-// }
