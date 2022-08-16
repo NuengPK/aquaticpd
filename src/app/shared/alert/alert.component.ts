@@ -10,10 +10,11 @@ export class AlertComponent implements OnInit {
   @Output() close = new EventEmitter<void>();
   constructor() { }
 
-  onClick(){
-    this.close.emit();
-  }
   ngOnInit(): void {
   }
 
+  onClick(){
+    this.close.emit();
+    console.log(this.message)
+  }
 }

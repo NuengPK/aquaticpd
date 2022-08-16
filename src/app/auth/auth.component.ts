@@ -47,7 +47,6 @@ export class AuthComponent implements OnInit {
           error: errorMessage => {
             console.log(errorMessage.name,errorMessage.message);
             this.showErrorAlert(errorMessage)
-            this.error = errorMessage;
             this.isLoading = false;
           }
         });
@@ -55,7 +54,7 @@ export class AuthComponent implements OnInit {
     authForm.reset();
   }
   onHandleAlert(){
-    this.error = null
+    this.error = null;
   }
   private showErrorAlert(message: string){
     const viewContainerRef = this.alertHost.viewContainerRed;

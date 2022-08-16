@@ -4,7 +4,7 @@
     <!-- <div class="alert alert-danger">
       <p>{{error}}</p>
     </div> -->
-    <app-alert (close)="onHandleAlert()" [message]="error" *ngIf="error" ></app-alert>
+    <app-alert (close)="onHandleAlert()" *ngIf="error" [message]="error"></app-alert>
     <div *ngIf="isLoading" class="mt-5">
       <app-loading-sinner></app-loading-sinner>
     </div>
