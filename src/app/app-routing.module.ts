@@ -16,8 +16,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'new', component: AquaticEditComponent },
-      { path: 'detail/:name', component: AquaticFoodDetailComponent },
-      { path: 'detail/:name/:edit', component: AquaticEditComponent },
+      { path: ':name', component: AquaticFoodDetailComponent },
+      { path: ':name/edit', component: AquaticEditComponent },
     ],
   },
   { path: 'auth', component: AuthComponent },
