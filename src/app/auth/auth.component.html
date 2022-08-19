@@ -15,7 +15,7 @@
         name="email"
         required
         email>
-        <label for="floatingInput">Email address</label>
+        <label for="floatingInput">อีเมล์</label>
       </div>
       <div class="form-floating md-3">
         <input type="text" class="form-control" id="floatingPassword" placeholder="Password"
@@ -23,13 +23,13 @@
         name="password"
         required
         minlength="8">
-        <label for="floatingPassword">Password</label>
+        <label for="floatingPassword">รหัสผ่าน</label>
       </div>
       <div>
         <button class="btn btn-primary me-3" type="submit"
-        [disabled]="!authForm.valid">{{isLoginMode?'Login':'Sing Up'}}</button>
+        [disabled]="!authForm.valid">{{isLoginMode?'เข้าสู่ระบบ':'สมัครสมาชิค'}}</button>
         <button class="btn btn-success" type="button"
-          (click)="onSwitchMode()">Pwith to {{!isLoginMode?'Login':'Sing Up'}}</button>
+          (click)="onSwitchMode()">เปลี่ยนเป็น {{!isLoginMode?'เข้าสู่ระบบ':'สมัครสมาชิค'}}</button>
       </div>
     </form>
   </div>

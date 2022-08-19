@@ -4,7 +4,7 @@
       <input
         type="text"
         class="form-control"
-        placeholder="Aquatic Name"
+        placeholder="ชื่ออาหาร"
         aria-label="Aquatic Name"
         ngModel
         name="aquaticNameInput"
@@ -19,7 +19,7 @@
       <input
         type="number"
         class="form-control"
-        placeholder="Qty"
+        placeholder="จำนวนสินค้าที่ต้องการ"
         aria-label="qunatity"
         [files]=""
         ngModel
@@ -43,7 +43,7 @@
         (click)="addDistridutionOnEdit()"
         [disabled]="f.invalid"
       >
-        Add
+        เพิ่มรายการ
       </button>
       <button
         *ngIf="checkUpDate"
@@ -52,23 +52,23 @@
         (click)="updateDistridutionOnEdit()"
         [disabled]="f.invalid"
       >
-        Update
+        ปรับปรุงรายการ
       </button>
       <button
         type="button"
         class="btn btn-danger me-2"
-        [disabled]="!checkUpDate"
+        *ngIf="checkUpDate"
         (click)="onDelete()"
       >
-        Delete
+        ลบรายการนี้
       </button>
       <button
         type="reset"
         class="btn btn-primary me-2"
-        [disabled]="f.invalid"
+        [disabled]="!(nameInput.touched||qtyInput.touched)"
         (click)="onClear()"
       >
-        Clear
+        ยกเลิกรายการ
       </button>
     </div>
   </div>
