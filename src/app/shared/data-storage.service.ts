@@ -37,6 +37,7 @@ export class DataStorageService {
         map((responseData) => {
           const postArray: AquaticFood[] = [];
           this.aquaticFoodService.onfetchPostToArray()
+          this.aquaticFoodService.aquaticFoodSubject.next(false);
           for (let key in responseData) {
             if (responseData.hasOwnProperty(key)) {
               postArray.push({ ...responseData[key] });
@@ -50,7 +51,7 @@ export class DataStorageService {
               );
             }
           }
-          return this.aquaticFoods;
+          return this.aquaticFoodService.aquaticFoodSubject.next(true);
         })
       )
       .subscribe(() => {});
