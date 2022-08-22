@@ -31,7 +31,7 @@ export class headerComponent implements OnInit {
     console.log(this.dataStorageService.createAquatic())
   }
   onFetchAquatic(){
-    this.dataStorageService.fetchAquatic()
+    this.dataStorageService.fetchAquatic().subscribe()
   }
   onLogout(){
     this.authService.logout();

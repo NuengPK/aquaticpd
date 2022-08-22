@@ -30,6 +30,12 @@ export class AquaticFoodService {
     });
     return detail;
   }
+  addAquaticByNum(num: number) {
+    const detail = this.aquaticFoods.find((value:AquaticFood,index:number) => {
+      return index == num;
+    });
+    return detail;
+  }
   addAquaticFood(name: string, qty: number, url: string, detail: string, menu: Array<string>, onHand:number) {
     this.aquaticFoods.push(new AquaticFood(name, detail, url, onHand, qty, menu));
   }
