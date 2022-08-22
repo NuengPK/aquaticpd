@@ -142,6 +142,9 @@ export class AuthService {
       case 'INVALIDID_PASSWORD':
         errorMessage = 'รหัสผ่านไม่ถูกต้อง';
         break;
+      case 'INVALID_PASSWORD':
+        errorMessage = 'รหัสผ่านไม่ถูกต้อง';
+        break;
       case 'USER_DISABLED':
         errorMessage = 'ท่านถูกระงับการใช้งาน กรุณาติดต่อผู้ดูเเลระบบ';
         break;
