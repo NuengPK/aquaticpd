@@ -54,7 +54,6 @@ export class DataStorageService {
           return this.aquaticFoodService.aquaticFoodSubject.next(true);
         })
       )
-      .subscribe(() => {});
   }
   deletePost() {
     return this.http.delete(this.url);
