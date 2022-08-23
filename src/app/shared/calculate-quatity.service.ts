@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { AquaticFood } from '../aquatic-foods/AquaticFood.model';
 import { AquaticFoodService } from './aquatic-food.service';
+import { Distribution } from './distribution.model';
 import { DistributionService } from './distridution.service';
 
 @Injectable({
@@ -11,17 +13,17 @@ export class CalculateQuatityService {
     private distributionService: DistributionService
   ) {}
 
-  Aquantity = this.aquaticFoodService.getAquaticFoods();
-  Dquantity = this.distributionService.getDistridution();
+  Dquantity:Distribution[] = this.distributionService.getDistridution();
+//private calculateQuatityService:CalculateQuatityService
 
-  calculate(){
-    for (let j = 0; j < this.Aquantity.length; j++){
-      for (let i = 0; i < this.Dquantity.length; i++) {
-        if (this.Dquantity[i].name === this.Aquantity[j].name.trim()) {
-          this.Aquantity[j].onHand = this.Aquantity[j].quantity - this.Dquantity[i].quantity;
+  calculate(Aquantity:AquaticFood[]){
+    Aquantity.map((valueA: AquaticFood)=>{
+      this.Dquantity.map((valueD: Distribution) =>{
+        if (valueA.name.trim() === valueD.name) {
+          valueA.onHand = valueA.quantity - valueD.quantity;
         }
-      }
-    }
+      })
+    })
   }
 
 

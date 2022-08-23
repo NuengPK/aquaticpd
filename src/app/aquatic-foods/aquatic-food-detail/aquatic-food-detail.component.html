@@ -25,18 +25,14 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Manage Aquatic Food & On Hand
+          จัดการสินค้า
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
             <a
               class="dropdown-item"
-              [routerLink]="[
-                '/AquaticFoods',
-                aquaticFood.name,
-                'edit'
-              ]"
-              >Update Aquatic</a
+              [routerLink]="['/AquaticFoods', aquaticFood.name, 'edit']"
+              >แก้ไขข้อมูลสินค้า</a
             >
           </li>
           <li>
@@ -44,22 +40,36 @@
               class="dropdown-item"
               (click)="onDeleteAquatic()"
               routerLink="/AquaticFoods"
-              >Delete Aquatic</a
+              >ลบสินค้าชิ้นนี้</a
             >
           </li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-12">
-      {{ aquaticFood.description }} <span *ngFor="let item of aquaticFood.menu"> {{item}} </span>
+       <h6>{{ aquaticFood.description }}</h6>
+      <span *ngFor="let item of aquaticFood.menu"> {{ item }} </span>
+
     </div>
   </div>
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-12">
-      Aquatic Food Received Qty & on Hands
-      <h4>{{ aquaticFood.quantity }} & {{ aquaticFood.onHand }}</h4>
+      <hr>
+      <div class="row border">
+        <div class="col-4 "> <span class="">จำนวนสินค้าทั้งหมด </span></div>
+        <div class="col-2 "><span class="">{{ aquaticFood.quantity }}</span></div>
+      </div>
+      <div class="row border">
+        <div class="col-4 "><span class=""> จำนวนการสั่งซื้อ </span></div>
+        <div class="col-2 "><span class="">{{ distribution.quantity }}</span></div>
+      </div>
+      <div class="row border">
+        <div class="col-4 "><span class=""> จำนวนสินค้าที่มีอยู่ </span></div>
+        <div class="col-2 "><span class="">{{ aquaticFood.quantity-distribution.quantity }}</span></div>
+      </div>
+      <hr>
     </div>
   </div>
 </div>

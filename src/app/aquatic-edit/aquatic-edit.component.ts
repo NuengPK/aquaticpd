@@ -3,7 +3,6 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AquaticFood } from '../aquatic-foods/AquaticFood.model';
 import { AquaticFoodService } from '../shared/aquatic-food.service';
-import { CalculateQuatityService } from '../shared/calculate-quatity.service';
 
 @Component({
   selector: 'app-aquatic-edit',
@@ -19,10 +18,10 @@ export class AquaticEditComponent implements OnInit {
   signupForm!: FormGroup;
   checkNewOrEdit!: string;
   aquaticInput!: AquaticFood | undefined;
+  submitEvent:boolean = false
   constructor(
     private route: ActivatedRoute,
-    private aquaticFoodService: AquaticFoodService,
-    private calculateQuatityService:CalculateQuatityService
+    private aquaticFoodService: AquaticFoodService
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +39,7 @@ export class AquaticEditComponent implements OnInit {
         detail: new FormControl(null, Validators.required),
         menu: new FormArray([]),
       });
-    } else {
+    } else {//this.aquaticInput.menu.map((value: string, index: number, array: string[]) =>)
       this.signupForm = new FormGroup({
         name: new FormControl(this.aquaticInput.name, Validators.required),
         quantity: new FormControl(
@@ -54,6 +53,11 @@ export class AquaticEditComponent implements OnInit {
         ),
         menu: new FormArray([]),
       });
+      this.aquaticInput.menu.map((value: string, index: number, array: string[]) =>{
+        const controls = new FormControl(value, Validators.required);
+        (<FormArray>this.signupForm.get('menu')).push(controls);
+      })
+
     }
   }
 
@@ -87,9 +91,8 @@ export class AquaticEditComponent implements OnInit {
         0
       );
     }
-    this.calculateQuatityService.calculate()
+    this.submitEvent = true
     console.log(this.signupForm);
-    this.signupForm.reset();
   }
   onAddMenu() {
     const controls = new FormControl(null, Validators.required);

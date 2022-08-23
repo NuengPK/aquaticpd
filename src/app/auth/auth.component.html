@@ -9,16 +9,16 @@
       <app-loading-sinner></app-loading-sinner>
     </div>
     <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-      <div class="form-floating md-3">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+      <div class="form-floating md-2">
+        <input type="email" class="form-control bg-light" id="floatingInput" placeholder="name@example.com"
         ngModel
         name="email"
         required
         email>
         <label for="floatingInput">อีเมล์</label>
       </div>
-      <div class="form-floating md-3">
-        <input type="text" class="form-control" id="floatingPassword" placeholder="Password"
+      <div class="form-floating md-3 mt-2">
+        <input type="text" class="form-control bg-light" id="floatingPassword" placeholder="Password"
         ngModel
         name="password"
         required
@@ -26,9 +26,9 @@
         <label for="floatingPassword">รหัสผ่าน</label>
       </div>
       <div>
-        <button class="btn btn-primary me-3" type="submit"
+        <button class="btn btn-primary me-3 mt-2" type="submit"
         [disabled]="!authForm.valid">{{isLoginMode?'เข้าสู่ระบบ':'สมัครสมาชิค'}}</button>
-        <button class="btn btn-success" type="button"
+        <button class="btn btn-success mt-2" type="button"
           (click)="onSwitchMode()">เปลี่ยนเป็น {{!isLoginMode?'เข้าสู่ระบบ':'สมัครสมาชิค'}}</button>
       </div>
     </form>

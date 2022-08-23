@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CalculateQuatityService } from '../shared/calculate-quatity.service';
 
 @Component({
   selector: 'app-aquatic-foods',
@@ -8,10 +7,9 @@ import { CalculateQuatityService } from '../shared/calculate-quatity.service';
 })
 export class AquaticFoodsComponent implements OnInit {
 
-  constructor(private calculateQuatityService:CalculateQuatityService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.calculateQuatityService.calculate()
   }
 
 }

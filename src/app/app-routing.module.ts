@@ -7,7 +7,6 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
 import { DistributionListComponent } from './distribution-list/distribution-list.component';
 import { PageNotFontComponent } from './page-not-font/page-not-font.component';
-import { AquaticResolverService } from './shared/aquatic-resolver.service';
 
 const routes: Routes = [
   { path: '',redirectTo: '/AquaticFoods', pathMatch: 'full' },

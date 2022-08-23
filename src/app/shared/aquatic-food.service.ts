@@ -31,8 +31,8 @@ export class AquaticFoodService {
     return detail;
   }
   addAquaticByNum(num: number) {
-    const detail = this.aquaticFoods.find((value:AquaticFood,index:number) => {
-      return index == num;
+    const detail = this.aquaticFoods.find((value:AquaticFood,index:number,opject:AquaticFood[]) => {
+      return index+1 === num;
     });
     return detail;
   }

@@ -3,7 +3,7 @@
 <div *ngFor="let foodList of aquaticFood; let i = index">
   <div *ngIf="foodList">
     <a
-      [routerLink]="['/AquaticFoods', foodList.name]"
+      [routerLink]="['/AquaticFoods', i+1]"
       routerLinkActive="active"
       class="list-group-item clearfix"
     >

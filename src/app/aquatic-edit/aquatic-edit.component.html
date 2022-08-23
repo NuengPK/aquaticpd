@@ -1,4 +1,11 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="signupForm" >
+  <div *ngIf="submitEvent === true" class="row">
+    <div class="alert alert-success">
+      <h5>บันทึกข้อมูลชั่วคราวเรียบร้อย</h5>
+      <hr>
+      <p>เพื่อบันทึกข้อมูลในฐานข้อมูล กรุณาใช้เมนู "บันทึก" ใน "จัดการข้อมูล" </p>
+    </div>
+  </div>
   <div class="row">
     <div class="mb-3">
       <button
