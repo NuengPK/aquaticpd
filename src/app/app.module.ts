@@ -22,6 +22,7 @@ import { LoadingSinnerComponent } from './loading-sinner/loading-sinner.componen
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceholderDirective } from './shared/placeholder.directive';
+import { IntroductoryTextComponent } from './aquatic-foods/introductory-text/introductory-text.component';
 //>>>>>>> Section---04-Service
 
 @NgModule({
@@ -39,7 +40,8 @@ import { PlaceholderDirective } from './shared/placeholder.directive';
     AuthComponent,
     LoadingSinnerComponent,
     AlertComponent,
-    PlaceholderDirective
+    PlaceholderDirective,
+    IntroductoryTextComponent
   ],
   imports: [
     BrowserModule,

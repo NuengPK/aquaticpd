@@ -1,7 +1,8 @@
 <h3>รายการ จอง/ซื้อ สินค้าอาหารทะเล</h3>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-10 mt-3">
     <app-distribution-edit></app-distribution-edit>
+    <hr>
   </div>
 </div>
 <div class="row">
@@ -13,7 +14,7 @@
         style="cursor: pointer"
       >
         <div (click)="onInput(item)">
-          <a> {{ item.name }} -- ({{ item.quantity }}) </a>
+          <a> {{ item.name }}  ({{ item.quantity }}) </a>
         </div>
       </div>
     </ul>
