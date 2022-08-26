@@ -12,18 +12,15 @@ import { DataStorageService } from '../shared/data-storage.service';
 export class headerComponent implements OnInit {
   userSubscription = new Subscription();
   isAuthenticate = false;
-  textAuthentication = ''
 
   constructor(private dataStorageService: DataStorageService,private aquaticFoodService:AquaticFoodService,
     private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.textAuthentication = this.isAuthenticate? 'หน้าแรก':'ระบบจัดการสินค้าวัถุดิบอาหารทะเล'
     this.userSubscription = this.authService.userSubject
     .subscribe(
       user => {
         this.isAuthenticate = !!user
-      this.textAuthentication = this.isAuthenticate? 'หน้าแรก':'ระบบจัดการสินค้าวัถุดิบอาหารทะเล'
       }
     )
   }

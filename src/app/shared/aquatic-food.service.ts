@@ -39,7 +39,7 @@ export class AquaticFoodService {
   addAquaticFood(name: string, qty: number, url: string, detail: string, menu: Array<string>, onHand:number) {
     this.aquaticFoods.push(new AquaticFood(name, detail, url, onHand, qty, menu));
   }
-  onfetchPostToArray(){
+resetAquaticFood(){
     return this.aquaticFoods = [];
   }
   upDateAquatic(name:string,upDate: AquaticFood) {

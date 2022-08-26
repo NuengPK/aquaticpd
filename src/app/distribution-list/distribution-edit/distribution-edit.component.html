@@ -4,7 +4,7 @@
       <input
         type="text"
         class="form-control"
-        placeholder="ชื่ออาหาร"
+        placeholder="ชื่อรายการสินค้าอาหารทะเล"
         aria-label="Aquatic Name"
         ngModel
         name="aquaticNameInput"
@@ -19,7 +19,7 @@
       <input
         type="number"
         class="form-control"
-        placeholder="จำนวนสินค้าที่ต้องการ"
+        placeholder="ปริมาณการสั่งซื้อ"
         aria-label="qunatity"
         [files]=""
         ngModel
@@ -60,7 +60,7 @@
         *ngIf="checkUpDate"
         (click)="onDelete()"
       >
-        ลบรายการนี้
+        ลบรายการ
       </button>
       <button
         type="reset"

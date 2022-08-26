@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container-fluid">
-    <a routerLink="/" class="navbar-brand">{{textAuthentication}}</a>
+    <a routerLink="/" class="navbar-brand">ระบบจัดการสินค้าอาหารทะเล</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -24,7 +24,7 @@
             routerLinkActive="active"
             class="nav-link"
             *ngIf="!isAuthenticate"
-            >ลงชื่อเข้าใช้</a
+            >เข้าใช้ระบบ</a
           >
         </li>
         <li class="nav-item">
@@ -32,7 +32,7 @@
             routerLink="/DistributionList"
             [routerLinkActive]="['active']"
             class="nav-link"
-            >รายการสั่งสินค้า</a
+            >รายการสั่งซื้อ</a
           >
         </li>
       </ul><div class="nav-item" *ngIf="isAuthenticate">

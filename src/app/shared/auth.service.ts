@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, Observable, Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../auth/user.model';
+import { AquaticFoodService } from './aquatic-food.service';
 
 export interface AuthUpResponseData {
   idToken: string;
@@ -22,7 +23,7 @@ export class AuthService {
   userSubject = new BehaviorSubject<User | null>(null);
   private tokenExpirationTimer: any = null;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private aquaticFoodService:AquaticFoodService) {}
 
   signUp(email: string, password: string) {
     const signUpURL =
@@ -78,6 +79,7 @@ export class AuthService {
       clearTimeout(this.tokenExpirationTimer);
     }
     this.tokenExpirationTimer = null;
+    this.aquaticFoodService.resetAquaticFood()
   }
 
   autoLogin() {
