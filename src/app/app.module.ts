@@ -23,6 +23,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceholderDirective } from './shared/placeholder.directive';
 import { IntroductoryTextComponent } from './aquatic-foods/introductory-text/introductory-text.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //>>>>>>> Section---04-Service
 
 @NgModule({
@@ -48,7 +49,8 @@ import { IntroductoryTextComponent } from './aquatic-foods/introductory-text/int
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [AquaticFoodService,DistributionService,
     {

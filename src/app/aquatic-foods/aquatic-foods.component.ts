@@ -11,5 +11,4 @@ export class AquaticFoodsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

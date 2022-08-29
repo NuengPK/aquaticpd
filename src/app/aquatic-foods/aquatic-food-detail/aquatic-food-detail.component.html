@@ -4,11 +4,12 @@
       <img
         src="{{ aquaticFood.imagePath }}"
         alt="{{ aquaticFood.name }}"
-        class="img-fluid"
+        class="img-fluid float-center"
+        style="height: 350px"
       />
     </div>
   </div>
-  <div class="row">
+  <div class="row mt-1">
     <div class="col-12">
       <h2>
         {{ aquaticFood.name }}
@@ -25,7 +26,7 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          จัดการสินค้า
+           คลังสินค้าอาหารทะเล
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
@@ -49,27 +50,59 @@
   </div>
   <div class="row mt-3">
     <div class="col-12">
-       <h6>{{ aquaticFood.description }}</h6>
+      <h6>{{ aquaticFood.description }}</h6>
       <span *ngFor="let item of aquaticFood.menu"> {{ item }} </span>
-
     </div>
   </div>
-  <div class="row mt-3">
+  <div class="row mt-2">
     <div class="col-12">
-      <hr>
-      <div class="row border">
-        <div class="col-4 "> <span class="">จำนวนสินค้าทั้งหมด </span></div>
-        <div class="col-2 "><span class="">{{ aquaticFood.quantity }}</span></div>
+      <div class="row mt-2 col-7 btn-group-vertical" role="group" >
+        <button class="btn btn-secondary mb-2 ms-2" type="button">
+          <fa-icon class="faCoffee float-start" [icon]="faStoreAlt"></fa-icon>
+          <span class="float-end"> สินค้ารับเข้าคลัง <button
+            class="btn btn-warning border ms-3"
+            style="
+              padding-top: 1px;
+              padding-bottom: 1px;
+              padding-left: 8px;
+              padding-right: 8px;
+              font-size: 13px;
+            "
+          >
+            {{ aquaticFood.quantity }}
+          </button></span>
+        </button>
+        <button class="btn btn-secondary mb-2 ms-2" type="button">
+          <fa-icon class="faCartPlus float-start" [icon]="faCartPlus"></fa-icon>
+          <span class="float-end"> ยอดจอง/สั่งซื้อ <button
+            class="btn btn-success border ms-3"
+            style="
+              padding-top: 1px;
+              padding-bottom: 1px;
+              padding-left: 8px;
+              padding-right: 8px;
+              font-size: 13px;
+            "
+          >
+          {{ distribution.quantity }}
+          </button></span>
+        </button>
+        <button class="btn btn-secondary mb-2 ms-2" type="button">
+          <fa-icon class="faBarsStaggered float-start" [icon]="faBarsStaggered"></fa-icon>
+          <span class="float-end"> ปริมาณสินค้าที่ขายได้ <button
+            class="btn btn-danger border ms-3"
+            style="
+              padding-top: 1px;
+              padding-bottom: 1px;
+              padding-left: 8px;
+              padding-right: 8px;
+              font-size: 13px;
+            "
+          >
+          {{aquaticFood.quantity - distribution.quantity}}
+          </button></span>
+        </button>
       </div>
-      <div class="row border">
-        <div class="col-4 "><span class=""> จำนวนการสั่งซื้อ </span></div>
-        <div class="col-2 "><span class="">{{ distribution.quantity }}</span></div>
-      </div>
-      <div class="row border">
-        <div class="col-4 "><span class=""> จำนวนสินค้าที่มีอยู่ </span></div>
-        <div class="col-2 "><span class="">{{ aquaticFood.quantity-distribution.quantity }}</span></div>
-      </div>
-      <hr>
     </div>
   </div>
 </div>

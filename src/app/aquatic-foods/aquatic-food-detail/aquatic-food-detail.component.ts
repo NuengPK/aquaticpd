@@ -5,6 +5,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Distribution } from 'src/app/shared/distribution.model';
 import { DistributionService } from 'src/app/shared/distridution.service';
 import { AquaticFood } from '../AquaticFood.model';
+import { faCartPlus, faStoreAlt, faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-aquatic-food-detail',
@@ -15,6 +16,9 @@ export class AquaticFoodDetailComponent implements OnInit {
   aquaticFood!: AquaticFood;
   distribution!: Distribution;
   checkItemOrRoute:boolean = false;
+  faCartPlus = faCartPlus;
+  faStoreAlt = faStoreAlt;
+  faBarsStaggered = faBarsStaggered;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,11 +28,19 @@ export class AquaticFoodDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if(this.aquaticFood){
+    if(this.aquaticFoodService.getAquaticFoods().length !== 0){
       this.route.params.subscribe((params: Params) => {
-        this.aquaticFood = this.aquaticFoodService.OpenDescription(
+        if (+params['name']) {
+          this.aquaticFood = this.aquaticFoodService.addAquaticByNum(
+            +params['name']
+          )!;
+          this.distribution = this.distributionService.addValueOnInput(this.aquaticFood.name)!
+        } else {
+          this.aquaticFood = this.aquaticFoodService.OpenDescription(
             params['name']
           )!;
+          this.distribution = this.distributionService.addValueOnInput(this.aquaticFood.name)!
+        }
       })
     }else this.dataStorageService.fetchAquatic().subscribe(() => {
       this.route.params.subscribe((params: Params) => {
