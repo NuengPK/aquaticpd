@@ -13,26 +13,14 @@
         type="submit"
         class="btn btn-success"
       >
-        Save
+      บันทึกข้อมูล
       </button>
       <button
         type="button"
         routerLink="/AquaticFoods"
-        class="ms-1 btn btn-danger"
+        class="ms-2 btn btn-danger "
       >
-        Cancel
-      </button>
-      <button
-        *ngIf="
-          signupForm.get('name')?.value ||
-          signupForm.get('quantity')?.value ||
-          signupForm.get('url')?.value ||
-          signupForm.get('detail')?.value
-        "
-        type="reset"
-        class="ms-1 btn btn-warning"
-      >
-        Clear
+      ยกเลิกรายการ
       </button>
     </div>
   </div>
@@ -56,7 +44,7 @@
   </div>
   <div class="row">
     <div class="mb-3">
-      <label class="form-label" for="">รับจำนวน</label>
+      <label class="form-label" for="">สินค้ารับเข้าคลัง</label>
       <input
         class="form-control"
         type="number"

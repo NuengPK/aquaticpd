@@ -26,6 +26,7 @@ export class DataStorageService {
         })
   }
   fetchAquatic() {
+          this.aquaticFoodService.aquaticFoodSubject.next(false);
     return this.authService.userSubject
       .pipe(
         take(1),
@@ -34,24 +35,13 @@ export class DataStorageService {
             params: new HttpParams().set('auth', <string>user?.token),
           });
         }),
-        map((responseData) => {
-          const postArray: AquaticFood[] = [];
-          this.aquaticFoodService.resetAquaticFood()
-          this.aquaticFoodService.aquaticFoodSubject.next(false);
-          for (let key in responseData) {
-            if (responseData.hasOwnProperty(key)) {
-              postArray.push({ ...responseData[key] });
-              this.aquaticFoodService.addAquaticFood(
-                responseData[key].name,
-                responseData[key].quantity,
-                responseData[key].imagePath,
-                responseData[key].description,
-                responseData[key].menu,
-                responseData[key].onHand
-              );
-            }
+        map((aquatic) => {
+            if (aquatic) {
+              this.aquaticFoodService.getAquatic(aquatic) ;
           }
-          return this.aquaticFoodService.aquaticFoodSubject.next(true);
+          //setTimeout(()=>{
+            return this.aquaticFoodService.aquaticFoodSubject.next(true);
+          //}, 2000)
         })
       )
   }
