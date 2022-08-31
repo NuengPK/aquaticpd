@@ -27,17 +27,18 @@ export class DataStorageService {
   }
   fetchAquatic() {
           this.aquaticFoodService.aquaticFoodSubject.next(false);
-    return this.authService.userSubject
+    //return this.authService.userSubject
+    return this.http.get<AquaticFood[]>(this.url)
       .pipe(
         take(1),
-        exhaustMap((user) => {
-          return this.http.get<AquaticFood[]>(this.url, {
-            params: new HttpParams().set('auth', <string>user?.token),
-          });
-        }),
+        // exhaustMap((user) => {
+        //   return this.http.get<AquaticFood[]>(this.url, {
+        //     params: new HttpParams().set('auth', <string>user?.token),
+        //   });
+        // }),
         map((aquatic) => {
             if (aquatic) {
-              this.aquaticFoodService.getAquatic(aquatic) ;
+               console.log(this.aquaticFoodService.getAquatic(aquatic))
           }
           //setTimeout(()=>{
             return this.aquaticFoodService.aquaticFoodSubject.next(true);

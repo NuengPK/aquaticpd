@@ -43,7 +43,7 @@ resetAquaticFood(){
     return this.aquaticFoods = [];
   }
   getAquatic(aquaticFoods:AquaticFood[]){
-    this.aquaticFoods = aquaticFoods
+    return this.aquaticFoods = aquaticFoods
   }
   upDateAquatic(name:string,upDate: AquaticFood) {
     return this.aquaticFoods.map((value: AquaticFood, index: number) => {

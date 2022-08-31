@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AquaticFood } from '../aquatic-foods/AquaticFood.model';
 import { AquaticFoodService } from '../shared/aquatic-food.service';
+import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-aquatic-edit',
@@ -21,10 +22,12 @@ export class AquaticEditComponent implements OnInit {
   submitEvent: boolean = false;
   constructor(
     private route: ActivatedRoute,
-    private aquaticFoodService: AquaticFoodService
+    private aquaticFoodService: AquaticFoodService,
+    private dataStorageService: DataStorageService
   ) {}
 
   ngOnInit(): void {
+    this.dataStorageService.fetchAquatic().subscribe()
     this.route.params.subscribe((params: Params) => {
       this.checkNewOrEdit = params['name']!;
       this.aquaticInput = this.aquaticFoodService.OpenDescription(

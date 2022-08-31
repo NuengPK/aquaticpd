@@ -1,7 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { AquaticFoodService } from 'src/app/shared/aquatic-food.service';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { AquaticFood } from '../AquaticFood.model';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-aquatic-food-list',
@@ -9,10 +6,7 @@ import { AquaticFood } from '../AquaticFood.model';
   styleUrls: ['./aquatic-food-list.component.css']
 })
 export class AquaticFoodListComponent implements OnInit {
-  constructor(private dataStorageService: DataStorageService) { }
+  constructor() { }
   ngOnInit(): void {
-  }
-  onFetchAquatic(){
-    this.dataStorageService.fetchAquatic().subscribe()
   }
 }
