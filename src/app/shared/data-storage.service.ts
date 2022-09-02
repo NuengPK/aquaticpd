@@ -37,9 +37,7 @@ export class DataStorageService {
         //   });
         // }),
         map((aquatic) => {
-            if (aquatic) {
-               console.log(this.aquaticFoodService.getAquatic(aquatic))
-          }
+            if (aquatic) {this.aquaticFoodService.getAquatic(aquatic)}
           //setTimeout(()=>{
             return this.aquaticFoodService.aquaticFoodSubject.next(true);
           //}, 2000)
