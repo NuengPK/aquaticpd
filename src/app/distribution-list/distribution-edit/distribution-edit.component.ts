@@ -44,6 +44,7 @@ export class DistributionEditComponent implements OnInit {
   }
   onClear() {
     this.checkUpDate = false;
+    this.distribution = {name:'',quantity:0}
   }
   onDelete() {
     this.distributionService.deleteDistridutionOnService(this.distribution.name)
