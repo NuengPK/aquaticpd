@@ -32,8 +32,7 @@ export class AquaticEditComponent implements OnInit {
           this.aquaticInput = this.aquaticFoodService.addAquaticByNum(
             +params['name']!
           );
-        }
-        if (params['name']!) {
+        }else {
           this.aquaticInput = this.aquaticFoodService.OpenDescription(
             params['name']!
           );
