@@ -26,7 +26,7 @@ export class AuthComponent implements OnInit {
     this.isLoginMode = !this.isLoginMode;
   }
   onSubmit(authForm: NgForm) {
-    console.log(authForm.value);
+    //console.log(authForm.value);
     if (authForm.valid) {
       this.isLoading = true;
       const email = authForm.value.email;
@@ -39,13 +39,13 @@ export class AuthComponent implements OnInit {
       }
       authObs.subscribe({
           next: (response) => {
-            console.log('Response : ', response);
+            //console.log('Response : ', response);
             this.error = null
             this.isLoading = false;
             this.router.navigate(["/AquaticFoods"])
           },
           error: errorMessage => {
-            console.log(errorMessage.name,errorMessage.message);
+            //console.log(errorMessage.name,errorMessage.message);
             this.showErrorAlert(errorMessage)
             this.isLoading = false;
           }

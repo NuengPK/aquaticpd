@@ -15,7 +15,7 @@ export class DistributionListComponent implements OnInit {
    this.distributions = this.distributionService.getDistridution()
   }
   onInput(f:Distribution){
-    console.log(f)
+    //console.log(f)
     this.distributionService.activedtedEmitter.next(f);
   }
 }

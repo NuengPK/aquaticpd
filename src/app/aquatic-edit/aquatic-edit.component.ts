@@ -87,7 +87,6 @@ export class AquaticEditComponent implements OnInit {
         onHand: 0,
         menu: this.signupForm.value.menu,
       };
-      console.log(upDateAquatic);
       this.aquaticFoodService.upDateAquatic(
         this.aquaticInput.name,
         upDateAquatic
@@ -111,7 +110,6 @@ export class AquaticEditComponent implements OnInit {
       );
     }
     this.submitEvent = true;
-    console.log(this.signupForm);
   }
   onAddMenu() {
     const controls = new FormControl(null, Validators.required);

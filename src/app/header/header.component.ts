@@ -25,7 +25,7 @@ export class headerComponent implements OnInit {
     )
   }
   onCreateAquatic(){
-    console.log(this.dataStorageService.createAquatic())
+    this.dataStorageService.createAquatic()
   }
   onFetchAquatic(){
     this.dataStorageService.fetchAquatic().subscribe()
