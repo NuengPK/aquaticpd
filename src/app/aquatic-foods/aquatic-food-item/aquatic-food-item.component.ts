@@ -20,7 +20,7 @@ export class AquaticFoodItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.aquaticFood = this.aquaticFoodService.getAquaticFoods()
-    this.aquaticFoodSubscription = this.aquaticFoodService.aquaticFoodSubject
+    this.aquaticFoodSubscription = this.aquaticFoodService.aquaticLoadingSubject
     .subscribe(
       check => {
         this.isAuthenticate = check

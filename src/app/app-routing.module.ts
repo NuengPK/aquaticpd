@@ -8,11 +8,14 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
 import { DistributionListComponent } from './distribution-list/distribution-list.component';
 import { PageNotFontComponent } from './page-not-font/page-not-font.component';
+import { DataOffResolverService } from './shared/resolver/data-off-resolver.service';
+import { DataResolverService } from './shared/resolver/data-resolver.service';
 
 const routes: Routes = [
   { path: '',redirectTo: '/AquaticFoods', pathMatch: 'full' },
   {
     path: 'AquaticFoods',
+    resolve:{showDataAqutic: DataResolverService},
     component: AquaticFoodsComponent,
     canActivate: [AuthGuard],
     children: [
@@ -27,6 +30,7 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   {
     path: 'DistributionList',
+    resolve:{showDataAqutic: DataOffResolverService},
     component: DistributionListComponent,
     children: [{ path: ':name', component: DistributionListComponent }],
   },

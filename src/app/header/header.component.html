@@ -1,74 +1,3 @@
-<!-- <nav class="navbar navbar-expand-md navbar-light bg-light">
-  <div class="container-fluid">
-    <a href="/" class="navbar-brand">ระบบจัดการสินค้าอาหารทะเล</a>
-    <button
-      class="navbar-toggler collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collaspe navbar-collapse show" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" *ngIf="isAuthenticate">
-          <a
-            routerLink="/AquaticFoods"
-            routerLinkActive="active"
-            class="nav-link"
-            >สินค้าอาหารทะเล</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            routerLink="/auth"
-            routerLinkActive="active"
-            class="nav-link"
-            *ngIf="!isAuthenticate"
-            >เข้าใช้ระบบ</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            routerLink="/DistributionList"
-            [routerLinkActive]="['active']"
-            class="nav-link"
-            >รายการสั่งซื้อ</a
-          >
-        </li>
-        <li class="nav-item" *ngIf="isAuthenticate">
-          <a style="cursor: pointer" class="nav-link" (click)="onLogout()"
-            >ออกจากระบบ</a
-          >
-        </li>
-        <li class="nav-item d-flex">
-          <div class="dropdown" *ngIf="isAuthenticate">
-            <a
-              class="nav-link dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="true"
-            >
-              ข้อมูลจากฐานข้อมูล
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li>
-                <a class="dropdown-item" (click)="onCreateAquatic()"
-                  >บันทึกข้อมูล</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" (click)="onFetchAquatic()"
-                  >เรียกข้อมูล</a
-                >
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav> -->
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container-fluid">
     <a href="/" class="navbar-brand">ระบบจัดการสินค้าอาหารทะเล</a>
@@ -114,7 +43,7 @@
             >ออกจากระบบ</a
           >
         </div>
-        <div class="dropdown" *ngIf="isAuthenticate">
+        <div class="dropdown me-3" *ngIf="showDataAqutic&&isAuthenticate">
           <a
             class="nav-link dropdown-toggle"
             style="cursor: pointer"

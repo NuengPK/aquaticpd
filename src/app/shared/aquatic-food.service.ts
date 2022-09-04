@@ -2,7 +2,8 @@ import { Subject } from 'rxjs';
 import { AquaticFood } from '../aquatic-foods/AquaticFood.model';
 
 export class AquaticFoodService {
-  aquaticFoodSubject = new Subject<boolean>();
+  aquaticLoadingSubject = new Subject<boolean>();
+  aquaticDataSubject = new Subject<boolean>();
   private aquaticFoods: AquaticFood[] = [
     // new AquaticFood(
     //   'ปลาอินทรี',

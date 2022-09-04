@@ -26,7 +26,7 @@ export class DataStorageService {
         })
   }
   fetchAquatic() {
-          this.aquaticFoodService.aquaticFoodSubject.next(false);
+          this.aquaticFoodService.aquaticLoadingSubject.next(false);
     //return this.authService.userSubject
     return this.http.get<AquaticFood[]>(this.url)
       .pipe(
@@ -39,7 +39,7 @@ export class DataStorageService {
         map((aquatic) => {
             if (aquatic) {this.aquaticFoodService.getAquatic(aquatic)}
           //setTimeout(()=>{
-            return this.aquaticFoodService.aquaticFoodSubject.next(true);
+            return this.aquaticFoodService.aquaticLoadingSubject.next(true);
           //}, 2000)
         })
       )

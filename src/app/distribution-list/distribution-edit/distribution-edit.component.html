@@ -39,7 +39,7 @@
       <button
         *ngIf="!checkUpDate"
         type="submit"
-        class="btn btn-success me-2"
+        class="btn btn-sm btn-success me-2"
         (click)="addDistridutionOnEdit()"
         [disabled]="f.invalid"
       >
@@ -48,7 +48,7 @@
       <button
         *ngIf="checkUpDate"
         type="button"
-        class="btn btn-success me-2"
+        class="btn btn-sm btn-success me-2"
         (click)="updateDistridutionOnEdit()"
         [disabled]="f.invalid"
       >
@@ -56,7 +56,7 @@
       </button>
       <button
         type="button"
-        class="btn btn-danger me-2"
+        class="btn btn-sm btn-danger me-2"
         *ngIf="checkUpDate"
         (click)="onDelete()"
       >
@@ -64,7 +64,7 @@
       </button>
       <button
         type="reset"
-        class="btn btn-primary me-2"
+        class="btn btn-sm btn-primary me-2"
         (click)="onClear()"
       >
         ยกเลิกรายการ
