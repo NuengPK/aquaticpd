@@ -16,6 +16,7 @@ export class DistributionListComponent implements OnInit {
   }
   onInput(f:Distribution){
     //console.log(f)
-    this.distributionService.activedtedEmitter.next(f);
+    this.distributionService.activedtedSubject.next(f);
+    this.distributionService.checkNameOffSubject.next(false);
   }
 }

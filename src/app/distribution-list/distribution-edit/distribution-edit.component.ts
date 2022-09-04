@@ -22,9 +22,12 @@ export class DistributionEditComponent implements OnInit {
       name: '',
       quantity: NaN,
     };
-    this.distributionService.activedtedEmitter.subscribe((distribution) => {
+    this.distributionService.activedtedSubject.subscribe((distribution) => {
       this.distribution = distribution;
       this.checkUpDate = true;
+      this.distributionService.checkNameOffSubject.subscribe((checkName)=>{
+        this.checkName = checkName
+      })
     });
   }
   addDistridutionOnEdit() {

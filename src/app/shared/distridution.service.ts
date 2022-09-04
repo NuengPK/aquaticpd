@@ -8,7 +8,8 @@ import { Distribution } from './distribution.model';
   providedIn: 'root',
 })
 export class DistributionService {
-  activedtedEmitter = new Subject<Distribution>();
+  activedtedSubject = new Subject<Distribution>();
+  checkNameOffSubject = new Subject<boolean>();
   private distritions: Distribution[] = [
     new Distribution('ปลาอินทรี', 10),
     new Distribution('หมึก', 20),
