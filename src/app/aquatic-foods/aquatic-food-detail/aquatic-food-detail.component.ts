@@ -15,46 +15,47 @@ import { faCartPlus, faStoreAlt, faBarsStaggered } from '@fortawesome/free-solid
 export class AquaticFoodDetailComponent implements OnInit {
   aquaticFood!: AquaticFood;
   distribution!: Distribution;
-  checkItemOrRoute:boolean = false;
+  checkItemOrRoute: boolean = false;
   faCartPlus = faCartPlus;
   faStoreAlt = faStoreAlt;
   faBarsStaggered = faBarsStaggered;
+  disQty = 0;
 
   constructor(
     private route: ActivatedRoute,
     private aquaticFoodService: AquaticFoodService,
     private dataStorageService: DataStorageService,
-    private distributionService:DistributionService
-  ) {}
+    private distributionService: DistributionService
+  ) { }
 
   ngOnInit(): void {
-    if(this.aquaticFoodService.getAquaticFoods().length !== 0){
+    if (this.aquaticFoodService.getAquaticFoods().length !== 0) {
       this.route.params.subscribe((params: Params) => {
         if (+params['name']) {
           this.aquaticFood = this.aquaticFoodService.addAquaticByNum(
             +params['name']
           )!;
-          this.distribution = this.distributionService.addValueOnInput(this.aquaticFood.name)!
         } else {
           this.aquaticFood = this.aquaticFoodService.OpenDescription(
             params['name']
           )!;
-          this.distribution = this.distributionService.addValueOnInput(this.aquaticFood.name)!
         }
+        this.distribution = this.distributionService.addValueOnInput(this.aquaticFood.name)!
+        this.disQty = this.distribution ? this.distribution.quantity : 0;
       })
-    }else this.dataStorageService.fetchAquatic().subscribe(() => {
+    } else this.dataStorageService.fetchAquatic().subscribe(() => {
       this.route.params.subscribe((params: Params) => {
         if (+params['name']) {
           this.aquaticFood = this.aquaticFoodService.addAquaticByNum(
             +params['name']
           )!;
-          this.distribution = this.distributionService.addValueOnInput(this.aquaticFood.name)!
         } else {
           this.aquaticFood = this.aquaticFoodService.OpenDescription(
             params['name']
           )!;
-          this.distribution = this.distributionService.addValueOnInput(this.aquaticFood.name)!
         }
+        this.distribution = this.distributionService.addValueOnInput(this.aquaticFood.name)!
+        this.disQty = this.distribution ? this.distribution.quantity : 0;
       });
     });
   }
