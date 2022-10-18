@@ -1,0 +1,86 @@
+<form #f="ngForm">
+
+  <div class="row mb-2">
+
+    <div class="col">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="ชื่อรายการสินค้าอาหารทะเล"
+        aria-label="Aquatic Name"
+        ngModel
+        name="aquaticNameInput"
+        #nameInput="ngModel"
+        [ngModel]="distribution.name"
+        required
+      />
+
+      <span *ngIf="nameInput.invalid && nameInput.touched">กรุณากรอกชื่อ</span>
+      <span *ngIf="checkName === true">ชื่อซ้ำ</span>
+    </div>
+
+    <div class="col">
+      <input
+        type="number"
+        class="form-control"
+        placeholder="ปริมาณการสั่งซื้อ"
+        aria-label="qunatity"
+        [files]=""
+        ngModel
+        name="qunatityInput"
+        #qtyInput="ngModel"
+        [ngModel]="distribution.quantity"
+        required
+        pattern="[0-9]+"
+      />
+
+      <span *ngIf="qtyInput.invalid && qtyInput.touched"
+        >กรุณากรอกเลข และตัวเลขไม่ควรติดลบ</span
+      >
+
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col">
+
+      <button
+        *ngIf="!checkUpdate"
+        type="submit"
+        class="btn btn-sm btn-success me-2"
+        (click)="addDistridutionOnEdit()"
+        [disabled]="f.invalid"
+      >
+        เพิ่มรายการ
+      </button>
+
+      <button
+        *ngIf="checkUpdate"
+        type="button"
+        class="btn btn-sm btn-success me-2"
+        (click)="updateDistridutionOnEdit()"
+        [disabled]="f.invalid"
+      >
+        ปรับปรุงรายการ
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-sm btn-danger me-2"
+        *ngIf="checkUpdate"
+        (click)="onDelete()"
+      >
+        ลบรายการ
+      </button>
+
+      <button
+        type="reset"
+        class="btn btn-sm btn-primary me-2"
+        (click)="onClear()"
+      >
+        ยกเลิกรายการ
+      </button>
+
+    </div>
+  </div>
+</form>
