@@ -26,7 +26,6 @@ export class AquaticEditComponent implements OnInit {
 
   constructor(
     private _route: ActivatedRoute,
-    private _aquaticFoodService: AquaticFoodService,
     private _dataStorageService: DataStorageService
   ) { }
 
@@ -75,64 +74,12 @@ export class AquaticEditComponent implements OnInit {
           }
         }
       });
-
-    // this.dataStorageService.fetchAquatic().subscribe(() => {
-    //   this.route.params.subscribe((params: Params) => {
-    //     if (+params['name']!) {
-    //       this.aquaticInput = this.aquaticFoodService.addAquaticByNum(
-    //         +params['name']!
-    //       );
-    //     } else {
-    //       this.aquaticInput = this.aquaticFoodService.openDescription(
-    //         params['name']!
-    //       );
-    //     }
-
-    //     if (this.aquaticInput == undefined) {
-    //       this.signupForm = new FormGroup({
-    //         name: new FormControl(null, Validators.required),
-    //         quantity: new FormControl(null, Validators.required),
-    //         url: new FormControl(null, Validators.required),
-    //         detail: new FormControl(null, Validators.required),
-    //         menu: new FormArray([]),
-    //       });
-    //     } else {
-    //       //this.aquaticInput.menu.map((value: string, index: number, array: string[]) =>)
-    //       this.signupForm = new FormGroup({
-    //         name: new FormControl(this.aquaticInput.name, Validators.required),
-    //         quantity: new FormControl(
-    //           this.aquaticInput.quantity,
-    //           Validators.required
-    //         ),
-    //         url: new FormControl(
-    //           this.aquaticInput.imagePath,
-    //           Validators.required
-    //         ),
-    //         detail: new FormControl(
-    //           this.aquaticInput.description,
-    //           Validators.required
-    //         ),
-    //         menu: new FormArray([]),
-    //       });
-
-    //       if (this.aquaticInput.menu) {
-    //         this.aquaticInput.menu.map(
-    //           (value: string, index: number, array: string[]) => {
-    //             const controls = new FormControl(value, Validators.required);
-    //             (<FormArray>this.signupForm.get('menu')).push(controls);
-    //           }
-    //         );
-    //       }
-    //     }
-    //   });
-    // });
   }
 
   onSubmit(): void {
     let action$;
-    // const fetchDB = this._dataStorageService.fetchAquatic().subscribe()
     let checkMode = '';
-    // let inputAquatic = this.signupForm?.getRawValue();
+
     let inputAquatic: AquaticFood = {
       name: this.signupForm.value.name,
       description: this.signupForm.value.detail,
@@ -141,41 +88,24 @@ export class AquaticEditComponent implements OnInit {
       onHand: 0,
       menu: this.signupForm.value.menu,
     };
+
     if (this.aquaticInput) {
       checkMode = 'บันทึก';
       action$ = this._dataStorageService.updateDB(this.aquaticInput.name, inputAquatic);
-      // .pipe(
-      //   () => this.dataStorageService.fetchAquatic()
-      // ).subscribe(() => {
-      //     this.aquaticInput = updateAquatic;
-      //     console.log('บันทึก : ', updateAquatic)
-      //   })
 
     } else {
       checkMode = 'สร้าง';
-      // this.aquaticFoodService.addAquaticFood(addAquatic);
-
       action$ = this._dataStorageService.createAquaticDB(inputAquatic);
-
-      // .pipe(
-      //   () => this.dataStorageService.fetchAquatic()
-      // ).subscribe(() => {
-      //     this.aquaticInput = addAquatic;
-      //     console.log('สร้าง : ', addAquatic);
-      //   });
     }
 
-    action$.pipe(
-      concatMap(
-        () => this._dataStorageService.fetchAquatic()
-      )
-    )
-    .subscribe(() => {
-      this.aquaticInput = inputAquatic;
-      console.log(checkMode, ' : ', inputAquatic);
-      this.submitEvent = true;
-      this._dataStorageService.dataChangeSubject.next(true);
-    })
+    action$.pipe(concatMap(() => this._dataStorageService.fetchAquatic()))
+      .subscribe(() => {
+        this.aquaticInput = inputAquatic;
+        this.submitEvent = true;
+        this._dataStorageService.dataChangeSubject.next(true);
+
+        console.log(checkMode, ' : ', inputAquatic);
+      })
   }
 
   onAddMenu(): void {

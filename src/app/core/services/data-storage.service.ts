@@ -30,10 +30,7 @@ export class DataStorageService {
   }
 
   fetchAquaticById(id: string): Observable<AquaticFood> {
-    // this.aquaticFoodService.aquaticLoadingSubject.next(false);
-
-    return this._http.get<AquaticFood>(`${this.url}/${id}`)
-      .pipe(); // tap(() => this.aquaticFoodService.aquaticLoadingSubject.next(true)));
+    return this._http.get<AquaticFood>(`${this.url}/${id}`);
   }
 
   fetchAquatic(): Observable<AquaticFood[]> {

@@ -82,19 +82,16 @@ export class AquaticFoodDetailComponent implements OnInit {
 
   onDeleteAquatic(): void {
     if (this.aquaticFood?._id) {
+
       this.dataStorageService.deleteInDB(this.aquaticFood._id)
-      .pipe(
-        concatMap(
-          () => {
-              return this.dataStorageService.fetchAquatic()
-          }
-        )
-      ).subscribe(() => {
-        console.log('ลบ : ', this.aquaticFood);
-        this.dataStorageService.dataChangeSubject.next(true);
+        .pipe(concatMap( () =>  this.dataStorageService.fetchAquatic() ))
+        .subscribe(() => {
+          console.log('ลบ : ', this.aquaticFood);
+          this.dataStorageService.dataChangeSubject.next(true);
         });
+
     } else {
-      console.log("ไม่พบรายการที่ต้องการลบ")
+      console.log("ไม่พบรายการที่ต้องการลบ");
     }
   }
 }

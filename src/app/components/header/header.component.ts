@@ -32,14 +32,6 @@ export class headerComponent implements OnInit {
     });
   }
 
-  // onCreateAquatic(): void {
-  //   this.dataStorageService.createAquatic();
-  // }
-
-  // onFetchAquatic(): void {
-  //   this.dataStorageService.fetchAquatic().subscribe();
-  // }
-
   onLogout(): void {
     this.authService.logout();
   }

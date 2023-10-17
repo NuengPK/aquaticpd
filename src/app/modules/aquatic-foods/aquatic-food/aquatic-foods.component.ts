@@ -19,14 +19,13 @@ export class AquaticFoodsComponent implements OnInit {
     ) { };
 
   ngOnInit(): void {
-   this.aquaticFood = this.activatedRoute.snapshot.data['aquaticFood'];
-  this._dataStorageService.dataChangeSubject.pipe(
-    concatMap(
-      () => this._dataStorageService.fetchAquatic()
-    )
-  ).subscribe(
-        (aquatic) => console.log(this.aquaticFood = aquatic)
+    this.aquaticFood = this.activatedRoute.snapshot.data['aquaticFood'];
 
-    );
+    this._dataStorageService.dataChangeSubject
+      .pipe( concatMap(() => this._dataStorageService.fetchAquatic()) )
+      .subscribe((aquatic) => {
+        this.aquaticFood = aquatic;
+        console.log(this.aquaticFood);
+      });
   }
 }
